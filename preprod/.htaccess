@@ -19,7 +19,7 @@ RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # --------------------------------------------
-# 3. WWW — Rediriger www.stv83.fr vers stv83.fr (canonical sans www)
+# 3. WWW — Rediriger www.stv-83.fr vers stv-83.fr (canonical sans www)
 # --------------------------------------------
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
