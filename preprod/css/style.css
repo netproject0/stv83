@@ -1397,6 +1397,214 @@ button {
   font-size: 1.0625rem;
 }
 
+/* ── CONTACT — 4 canaux + atelier ─────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-channels {
+  padding-block: var(--section-v-mobile);
+  background: var(--color-bg);
+}
+
+.channels-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.channel-card {
+  display: block;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.channel-card:hover,
+.channel-card:focus-visible {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.channel-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(229,98,11,0.08);
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: background var(--transition);
+}
+
+.channel-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.channel-card:hover .channel-icon {
+  background: rgba(229,98,11,0.18);
+}
+
+.channel-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.channel-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.65rem;
+  word-break: break-word;
+}
+
+.channel-cta {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent-dk);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* WhatsApp variant — vert officiel */
+.channel-card--wa .channel-icon {
+  background: rgba(37,211,102,0.12);
+  color: #128C7E;
+}
+.channel-card--wa:hover .channel-icon {
+  background: #25D366;
+  color: #fff;
+}
+.channel-card--wa:hover,
+.channel-card--wa:focus-visible {
+  border-color: #25D366;
+}
+.channel-card--wa .channel-cta {
+  color: #128C7E;
+}
+
+@media (min-width: 600px)  { .channels-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .channels-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1024px) { .contact-channels { padding-block: var(--section-v-desktop); } }
+
+/* ── ATELIER : adresse + carte ─────────────────────────────── */
+.contact-location {
+  padding-block: var(--section-v-mobile);
+  background: var(--color-bg-alt);
+}
+
+.location-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.location-info { color: var(--color-text); }
+
+.location-address {
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 1.25rem 0 2rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-accent);
+}
+
+.location-hours { margin-bottom: 2rem; }
+
+.location-hours h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-dark);
+  margin-bottom: 0.75rem;
+}
+
+.hours-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+}
+
+.hours-list > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hours-list dt {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.hours-list dd {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.hours-note {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.location-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.location-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.location-social a:hover { color: var(--color-accent-dk); }
+
+.location-social svg {
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent);
+}
+
+@media (min-width: 900px) {
+  .location-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+}
+@media (min-width: 1024px) { .contact-location { padding-block: var(--section-v-desktop); } }
+
+/* ── Anciens styles contact (form) — conservés mais inutilisés ─ */
 .contact-section {
   padding-block: var(--section-v-mobile);
   background: var(--color-bg);
