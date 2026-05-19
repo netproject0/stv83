@@ -526,6 +526,139 @@ button {
   .valeurs-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
+/* ── 5b. SECTION : NOTRE PROCESS ────────────────────────────── */
+.process {
+  padding-block: var(--section-v-mobile);
+  background: var(--color-bg-alt);
+}
+
+.process-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  counter-reset: step;
+}
+
+.process-step {
+  position: relative;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 2rem 1.75rem;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.process-step:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.process-step-num {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(229,98,11,0.1);
+  border: 1px solid rgba(229,98,11,0.3);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.process-step h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.process-step p {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .process-steps { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .process { padding-block: var(--section-v-desktop); }
+}
+
+/* ── 5c. SECTION : POUR QUI NOUS TRAVAILLONS (B2B) ──────────── */
+.audience {
+  padding-block: var(--section-v-mobile);
+  background: var(--color-bg);
+}
+
+.audience-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.audience-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 1.5rem;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.audience-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.audience-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(229,98,11,0.08);
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.audience-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.audience-card h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.audience-card p {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+@media (min-width: 600px) {
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .audience { padding-block: var(--section-v-desktop); }
+  .audience-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 /* ── 6. SECTION : TOUT SAVOIR ──────────────────────────────── */
 .savoir {
   padding-block: var(--section-v-mobile);
