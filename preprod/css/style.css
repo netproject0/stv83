@@ -1081,41 +1081,28 @@ button {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
+  align-items: stretch;
+}
+.cta-actions .btn {
+  margin: 0;
 }
 
-/* WhatsApp button (vert WhatsApp officiel #25D366) */
+/* WhatsApp button (vert WhatsApp officiel #25D366)
+   Hérite intégralement de .btn pour rester aligné en hauteur, padding et font-size. */
 .btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   background: #25D366;
   color: #fff;
-  padding: 14px 28px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   border: 2px solid #25D366;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s, border-color 0.2s;
+  justify-content: center;
 }
 .btn-whatsapp:hover,
 .btn-whatsapp:focus-visible {
   background: #1DA851;
   border-color: #1DA851;
-  transform: translateY(-1px);
-}
-.btn-whatsapp-on-orange {
-  background: #fff;
-  color: #128C7E;
-  border-color: #fff;
-}
-.btn-whatsapp-on-orange:hover,
-.btn-whatsapp-on-orange:focus-visible {
-  background: #25D366;
   color: #fff;
-  border-color: #25D366;
+}
+.btn-whatsapp svg {
+  flex-shrink: 0;
 }
 
 /* ── 12. FOOTER ────────────────────────────────────────────── */
