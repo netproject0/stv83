@@ -43,17 +43,23 @@
         "@type": "LocalBusiness",
         "@id": "https://stv-83.fr/#business",
         "name": "STV 83 — Sablage Thermolaquage Varois",
+        "legalName": "SABLAGE THERMOLAQUAGE VAROIS",
         "alternateName": "STV 83",
-        "description": "Atelier spécialisé dans le sablage, le grenaillage et le thermolaquage de pièces métalliques (portails, garde-corps, mobilier urbain) dans le Var.",
+        "description": "Atelier spécialisé dans le sablage, le grenaillage et le thermolaquage de pièces métalliques (portails, garde-corps, mobilier urbain, pièces techniques) à La Seyne-sur-Mer (Var, 83). Entreprise SAS créée en janvier 2020.",
         "image": "https://stv-83.fr/preprod/public/images/portail-2.jpg",
         "logo": "https://stv-83.fr/logo.png",
         "url": "https://stv-83.fr/",
         "telephone": "+33760249313",
         "email": "contact.stv83@gmail.com",
         "priceRange": "€€",
+        "foundingDate": "2020-01-14",
+        "vatID": "FR25881350508",
+        "taxID": "88135050800019",
+        "iso6523Code": "0009:881350508",
+        "naics": "25.61Z",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "177 Montée batterie de la Montagne",
+          "streetAddress": "177 Montée Batterie de la Montagne",
           "addressLocality": "La Seyne-sur-Mer",
           "postalCode": "83500",
           "addressRegion": "Provence-Alpes-Côte d'Azur",
@@ -61,10 +67,15 @@
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 43.0942,
-          "longitude": 5.8800
+          "latitude": 43.118065,
+          "longitude": 5.873483
         },
         "areaServed": [
+          { "@type": "City", "name": "La Seyne-sur-Mer" },
+          { "@type": "City", "name": "Toulon" },
+          { "@type": "City", "name": "Hyères" },
+          { "@type": "City", "name": "Six-Fours-les-Plages" },
+          { "@type": "City", "name": "Sanary-sur-Mer" },
           { "@type": "AdministrativeArea", "name": "Var" },
           { "@type": "AdministrativeArea", "name": "Provence-Alpes-Côte d'Azur" }
         ],
@@ -74,9 +85,52 @@
           "opens": "08:00",
           "closes": "18:00"
         }],
+        "founder": {
+          "@type": "Person",
+          "name": "Alexandre Nguyen",
+          "jobTitle": "Président de SAS"
+        },
         "sameAs": [
-          "https://www.facebook.com/",
-          "https://www.instagram.com/"
+          "https://www.instagram.com/stvarois83/",
+          "https://annuaire-entreprises.data.gouv.fr/entreprise/sablage-thermolaquage-varois-881350508"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": "12",
+          "ratingCount": "12"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Lucy Skain" },
+            "datePublished": "2025-12-15",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "STV 83 a fait du bon travail pour un portail bien abîmé. Ils ont pris le temps d'ajuster le portail repeint. Et en plus ils sont sympathiques et pas grincheux."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Anne Bax" },
+            "datePublished": "2024-07-20",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "Le thermolaquage fait par STV 83 pour les portes de notre cuisine d'été est parfait. Le travail est soigné et l'accueil chaleureux. Nous recommandons vivement."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Henri Guada" },
+            "datePublished": "2024-10-10",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "Je viens de faire repeindre un cadre et des jantes de mobylette, je suis très satisfait du travail réalisé par STV 83, une entreprise serviable et professionnelle."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Sergio" },
+            "datePublished": "2026-04-15",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "STV 83 a fait un super travail sur ma sculpture métallique. Personnes sympathiques, à l'écoute de nos attentes, travail et finitions parfaites. Je recommande pour tout ouvrage de sablage et thermolaquage."
+          }
         ]
       },
       {
@@ -474,7 +528,10 @@
           <span class="accent-line" aria-hidden="true"></span>
         </div>
 
-        <!-- TODO: replace with real Google reviews. Anna Paulina, Kristina Lee, Pablo Gusterio are placeholder names — must be replaced with verified customer testimonials before public launch. -->
+        <p class="testimonials-intro" style="text-align:center;color:#666;margin-bottom:32px">
+          Avis vérifiés sur Google — note moyenne <strong>4,8/5</strong> ·
+          <a href="https://www.google.com/search?q=STV+83+Sablage+Thermolaquage+Varois+La+Seyne+sur+Mer" target="_blank" rel="noopener noreferrer">voir tous les avis</a>
+        </p>
         <div class="testimonials-grid">
           <article class="testimonial-card fade-in">
             <div class="stars" aria-label="5 étoiles sur 5">
@@ -485,9 +542,9 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
             </div>
             <p class="testimonial-text">
-              « Un professionnalisme jamais vu ailleurs, après plusieurs devis un peu partout, j'ai fait le bon choix. »
+              « STV 83 a fait du bon travail pour un portail bien abîmé. Ils ont pris le temps d'ajuster le portail repeint. Et en plus ils sont sympathiques et pas grincheux. »
             </p>
-            <p class="testimonial-author">Anna Paulina</p>
+            <p class="testimonial-author">Lucy Skain<span class="testimonial-meta"> · Avis Google · décembre 2025</span></p>
           </article>
 
           <article class="testimonial-card fade-in">
@@ -499,9 +556,9 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
             </div>
             <p class="testimonial-text">
-              « Merci encore, rien à dire, gentil et pro. Merci à toute l'équipe. »
+              « Le thermolaquage fait par STV 83 pour les portes de notre cuisine d'été est parfait. Le travail est soigné et l'accueil chaleureux. Nous recommandons vivement. »
             </p>
-            <p class="testimonial-author">Kristina Lee</p>
+            <p class="testimonial-author">Anne Bax<span class="testimonial-meta"> · Avis Google · juillet 2024</span></p>
           </article>
 
           <article class="testimonial-card fade-in">
@@ -513,9 +570,23 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
             </div>
             <p class="testimonial-text">
-              « Un travail propre et rapide, merci à l'équipe pour mon tout nouveau portail. Je conseille fortement. »
+              « Je viens de faire repeindre un cadre et des jantes de mobylette, je suis très satisfait du travail réalisé par STV 83, une entreprise serviable et professionnelle. »
             </p>
-            <p class="testimonial-author">Pablo Gusterio</p>
+            <p class="testimonial-author">Henri Guada<span class="testimonial-meta"> · Avis Google · octobre 2024</span></p>
+          </article>
+
+          <article class="testimonial-card fade-in">
+            <div class="stars" aria-label="5 étoiles sur 5">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            </div>
+            <p class="testimonial-text">
+              « STV 83 a fait un super travail sur ma sculpture métallique. Personnes sympathiques, à l'écoute de nos attentes, travail et finitions parfaites. Je recommande pour tout ouvrage de sablage et thermolaquage. »
+            </p>
+            <p class="testimonial-author">Sergio<span class="testimonial-meta"> · Avis Google · avril 2026</span></p>
           </article>
         </div>
       </div>
@@ -552,19 +623,18 @@
             <p><a href="#" data-email="contact.stv83|gmail.com" data-text="true">contact (at) stv83</a></p>
           </address>
           <div class="footer-social" aria-label="Réseaux sociaux">
-            <!-- TODO: replace with real STV 83 social media URLs once accounts created -->
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/" aria-label="Facebook STV 83" rel="noopener noreferrer" target="_blank">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-            </a>
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/" aria-label="Instagram STV 83" rel="noopener noreferrer" target="_blank">
+            <!-- Instagram @stvarois83 -->
+            <a href="https://www.instagram.com/stvarois83/" aria-label="Instagram STV 83 (@stvarois83)" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
                 <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
                 <circle cx="17.5" cy="6.5" r="1.5"/>
+              </svg>
+            </a>
+            <!-- Google Business / Reviews -->
+            <a href="https://www.google.com/search?q=STV+83+Sablage+Thermolaquage+Varois+La+Seyne+sur+Mer" aria-label="Avis Google STV 83" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
               </svg>
             </a>
           </div>

@@ -1005,6 +1005,22 @@ button {
   letter-spacing: 0.07em;
   color: var(--color-accent);
 }
+.testimonial-meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(255,255,255,0.55);
+}
+.testimonials-intro {
+  font-size: 0.95rem;
+}
+.testimonials-intro a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
 
 /* ── 11. CTA BANDEAU ───────────────────────────────────────── */
 .cta-bandeau {
