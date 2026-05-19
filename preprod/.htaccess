@@ -64,13 +64,14 @@ RewriteRule ^([^\.]+)$ $1.html [L]
 </IfModule>
 
 # --------------------------------------------
-# 7. HEADERS DE SÉCURITÉ
+# 7. HEADERS DE SÉCURITÉ + noindex (preprod uniquement)
 # --------------------------------------------
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set X-Robots-Tag "noindex, nofollow"
   Header unset X-Powered-By
 </IfModule>
 

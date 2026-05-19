@@ -38,12 +38,5 @@ RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
   Header unset X-Powered-By
 </IfModule>
 
-# 7. Empêcher l'indexation Google de /preprod/ (page d'attente uniquement publique)
-<IfModule mod_headers.c>
-  <LocationMatch "^/preprod">
-    Header set X-Robots-Tag "noindex, nofollow"
-  </LocationMatch>
-</IfModule>
-
 AddDefaultCharset UTF-8
 DirectoryIndex index.html
