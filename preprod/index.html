@@ -12,16 +12,16 @@
   <meta property="og:title" content="STV 83 — Thermolaquage & Sablage dans le Var">
   <meta property="og:description" content="Atelier de traitement de surface à La Seyne-sur-Mer. Sablage, grenaillage, thermolaquage de pièces métalliques.">
   <meta property="og:url" content="https://stv-83.fr/">
-  <meta property="og:image" content="https://stv-83.fr/preprod/public/images/portail-2.jpg">
-  <meta property="og:image:width" content="1500">
-  <meta property="og:image:height" content="1182">
+  <meta property="og:image" content="https://stv-83.fr/preprod/public/images/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="fr_FR">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="STV 83 — Thermolaquage & Sablage Var">
   <meta name="twitter:description" content="Traitement de surface pour pièces métalliques à La Seyne-sur-Mer.">
-  <meta name="twitter:image" content="https://stv-83.fr/preprod/public/images/portail-2.jpg">
+  <meta name="twitter:image" content="https://stv-83.fr/preprod/public/images/og-card.jpg">
 
   <link rel="icon" type="image/png" href="public/images/logo.png">
 
@@ -32,7 +32,63 @@
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="public/images/thermolaquage-2.jpg" fetchpriority="high">
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Critical CSS: above-the-fold styles inlined to eliminate render-blocking on LCP path -->
+  <style>
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/Inter-Regular.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url('fonts/Inter-Bold.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-weight:800;font-display:swap;src:url('fonts/Inter-ExtraBold.woff2') format('woff2')}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--color-black:#0F0F0F;--color-dark:#1A1A1A;--color-charcoal:#222222;--color-accent:#E5620B;--color-accent-dk:#C04E07;--color-bg:#FAFAF7;--color-text:#222222;--color-muted:#6B6B6B;--color-border:#E2E1DC;--color-white:#FFFFFF;--font-main:'Inter','Helvetica Neue',Arial,sans-serif;--container-max:1280px;--container-pad:1.25rem;--radius-sm:4px;--transition:200ms ease}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font-main);color:var(--color-text);background:var(--color-bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    button{cursor:pointer;font-family:inherit;border:none;background:none}
+    .container{width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-pad)}
+    @media(min-width:768px){:root{--container-pad:2rem}}
+    @media(min-width:1024px){:root{--container-pad:3rem}}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:var(--radius-sm);transition:background var(--transition),color var(--transition),border-color var(--transition)}
+    .btn-primary{background:#C05200;color:var(--color-white);border:2px solid #C05200}
+    .btn-primary:hover,.btn-primary:focus-visible{background:#A34500;border-color:#A34500}
+    .btn-secondary{background:transparent;color:var(--color-white);border:2px solid var(--color-white)}
+    .btn-secondary:hover,.btn-secondary:focus-visible{background:var(--color-white);color:var(--color-charcoal)}
+    .btn-whatsapp{background:#25D366;color:#fff;border:2px solid #25D366}
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:fixed;top:1rem;left:1rem;width:auto;height:auto;padding:.75rem 1.5rem;background:#C05200;color:#fff;z-index:9999;border-radius:4px;font-weight:700}
+    .site-header{position:sticky;top:0;z-index:1000;background:var(--color-white);border-bottom:1px solid var(--color-border);transition:box-shadow 250ms ease}
+    .site-header.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.12)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+    .nav-logo img{height:44px;width:auto;object-fit:contain}
+    .nav-menu{display:none;align-items:center;gap:.25rem}
+    .nav-menu a{display:inline-flex;padding:.4rem .85rem;font-size:.9rem;font-weight:600;color:var(--color-charcoal);border-radius:var(--radius-sm);transition:color var(--transition),background var(--transition);white-space:nowrap}
+    .nav-menu a:hover,.nav-menu a.active{color:#C05200;background:rgba(192,82,0,.07)}
+    .nav-cta{display:none}
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:4px;background:none;border:none;cursor:pointer;flex-shrink:0}
+    .hamburger span{display:block;width:100%;height:2px;background:var(--color-charcoal);border-radius:2px;transition:transform 280ms ease,opacity 200ms ease;transform-origin:center}
+    .mobile-nav{display:none;flex-direction:column;padding:1rem 1.25rem 1.5rem;background:var(--color-white);border-top:1px solid var(--color-border);gap:.25rem}
+    .mobile-nav.open{display:flex}
+    @media(min-width:768px){.nav-menu{display:flex}.nav-cta{display:inline-flex}.hamburger{display:none}}
+    .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background-image:url('public/images/thermolaquage-2.jpg');background-size:cover;background-position:center 40%;background-repeat:no-repeat;will-change:transform}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,.55) 60%,rgba(229,98,11,.18) 100%)}
+    .hero-content{position:relative;z-index:2;padding-block:5rem 4rem}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--color-accent);margin-bottom:1.25rem}
+    .hero-eyebrow::before{content:'';display:block;width:32px;height:2px;background:var(--color-accent)}
+    .hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--color-white);line-height:1.05;max-width:18ch}
+    .hero h1 .brand{color:var(--color-accent)}
+    .hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:rgba(255,255,255,.82);margin-top:1.25rem;max-width:44ch;font-weight:400}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+    :focus-visible{outline:3px solid var(--color-accent);outline-offset:3px}
+    picture{display:contents}
+  </style>
+
+  <!-- Non-critical CSS loaded asynchronously -->
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -205,7 +261,10 @@
     <div class="container">
       <nav class="nav-inner" role="navigation" aria-label="Navigation principale">
         <a href="index.html" class="nav-logo" aria-label="STV 83 — Accueil">
-          <img src="public/images/logo-noir.png" alt="STV 83 logo" width="120" height="46" loading="eager">
+          <picture>
+            <source srcset="public/images/logo-noir.webp" type="image/webp">
+            <img src="public/images/logo-noir.png" alt="STV 83 — Sablage Thermolaquage Varois" width="120" height="46" loading="eager">
+          </picture>
         </a>
 
         <ul class="nav-menu" role="list">
@@ -326,14 +385,20 @@
         <div class="savoir-layout">
           <!-- Images décoratives -->
           <div class="savoir-images fade-in" aria-hidden="true">
-            <img src="public/images/poudre.png"
-                 alt="Illustration poudre de thermolaquage"
-                 loading="lazy"
-                 width="339" height="728">
-            <img src="public/images/thermolaquage-1.jpg"
-                 alt="Opération de thermolaquage en atelier"
-                 loading="lazy"
-                 width="1500" height="1000">
+            <picture>
+              <source srcset="public/images/poudre.webp" type="image/webp">
+              <img src="public/images/poudre.png"
+                   alt="Bidons de peinture poudre époxy et polyester pour thermolaquage"
+                   loading="lazy"
+                   width="339" height="728">
+            </picture>
+            <picture>
+              <source srcset="public/images/thermolaquage-1.webp" type="image/webp">
+              <img src="public/images/thermolaquage-1.jpg"
+                   alt="Application de peinture poudre par pistolage électrostatique"
+                   loading="lazy"
+                   width="1500" height="1000">
+            </picture>
           </div>
 
           <!-- Accordion FAQ -->
@@ -421,36 +486,48 @@
 
         <div class="gallery-grid" role="list">
           <div class="gallery-item" data-category="garde-corps" role="listitem">
-            <img src="public/images/garde-corps-1.jpg"
-                 alt="Garde-corps thermolaqué n°1 — réalisation STV 83"
-                 loading="lazy" width="640" height="480">
+            <picture>
+              <source srcset="public/images/garde-corps-1.webp" type="image/webp">
+              <img src="public/images/garde-corps-1.jpg"
+                   alt="Garde-corps en métal thermolaqué — réalisation STV 83 Var"
+                   loading="lazy" width="640" height="480">
+            </picture>
             <div class="gallery-caption">
               <span>Garde-corps n°1</span>
             </div>
           </div>
 
           <div class="gallery-item" data-category="garde-corps" role="listitem">
-            <img src="public/images/garde-corps-2.jpg"
-                 alt="Garde-corps thermolaqué n°2 — réalisation STV 83"
-                 loading="lazy" width="480" height="640">
+            <picture>
+              <source srcset="public/images/garde-corps-2.webp" type="image/webp">
+              <img src="public/images/garde-corps-2.jpg"
+                   alt="Garde-corps thermolaqué fixé en extérieur — STV 83 La Seyne-sur-Mer"
+                   loading="lazy" width="480" height="640">
+            </picture>
             <div class="gallery-caption">
               <span>Garde-corps n°2</span>
             </div>
           </div>
 
           <div class="gallery-item" data-category="garde-corps" role="listitem">
-            <img src="public/images/garde-corps-3.jpg"
-                 alt="Garde-corps thermolaqué n°3 — réalisation STV 83"
-                 loading="lazy" width="640" height="480">
+            <picture>
+              <source srcset="public/images/garde-corps-3.webp" type="image/webp">
+              <img src="public/images/garde-corps-3.jpg"
+                   alt="Garde-corps en acier traité par sablage et thermolaquage — STV 83"
+                   loading="lazy" width="640" height="480">
+            </picture>
             <div class="gallery-caption">
               <span>Garde-corps n°3</span>
             </div>
           </div>
 
           <div class="gallery-item" data-category="autres" role="listitem">
-            <img src="public/images/piece-1.jpg"
-                 alt="Pièce technique thermolaquée n°1 — réalisation STV 83"
-                 loading="lazy" width="1920" height="1280">
+            <picture>
+              <source srcset="public/images/piece-1.webp" type="image/webp">
+              <img src="public/images/piece-1.jpg"
+                   alt="Pièce métallique en cours de thermolaquage par projection électrostatique"
+                   loading="lazy" width="1920" height="1280">
+            </picture>
             <div class="gallery-caption">
               <span>Pièce n°1</span>
             </div>
@@ -458,7 +535,7 @@
 
           <div class="gallery-item" data-category="autres" role="listitem">
             <img src="public/images/piece-2.jpg"
-                 alt="Pièce technique thermolaquée n°2 — réalisation STV 83"
+                 alt="Pièce métallique thermolaquée — atelier STV 83 La Seyne-sur-Mer"
                  loading="lazy" width="1000" height="666">
             <div class="gallery-caption">
               <span>Pièce n°2</span>
@@ -466,9 +543,12 @@
           </div>
 
           <div class="gallery-item" data-category="portails" role="listitem">
-            <img src="public/images/portail-2.jpg"
-                 alt="Portail thermolaqué — réalisation STV 83"
-                 loading="lazy" width="1500" height="1182">
+            <picture>
+              <source srcset="public/images/portail-2.webp" type="image/webp">
+              <img src="public/images/portail-2.jpg"
+                   alt="Portail thermolaqué noir réalisé par STV 83 à La Seyne-sur-Mer (Var)"
+                   loading="lazy" width="1500" height="1182">
+            </picture>
             <div class="gallery-caption">
               <span>Portail n°2</span>
             </div>
@@ -480,6 +560,8 @@
     <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image en plein écran">
       <button id="lightbox-close" class="lightbox-close" aria-label="Fermer">&times;</button>
+      <button id="lightbox-prev" class="lightbox-prev" aria-label="Image précédente">&#8249;</button>
+      <button id="lightbox-next" class="lightbox-next" aria-label="Image suivante">&#8250;</button>
       <img id="lightbox-img" class="lightbox-img" src="" alt="">
       <p id="lightbox-caption" class="lightbox-caption"></p>
     </div>
@@ -629,7 +711,10 @@
         <!-- Coordonnées -->
         <div class="footer-col">
           <div class="footer-brand">
-            <img src="public/images/logo-noir.png" alt="STV 83" width="120" height="46" loading="lazy">
+            <picture>
+              <source srcset="public/images/logo-noir.webp" type="image/webp">
+              <img src="public/images/logo-noir.png" alt="STV 83 — Sablage Thermolaquage Varois" width="120" height="46" loading="lazy">
+            </picture>
           </div>
           <h4>Coordonnées</h4>
           <address>

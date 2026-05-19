@@ -120,9 +120,13 @@
   const lbImg       = document.getElementById('lightbox-img');
   const lbCaption   = document.getElementById('lightbox-caption');
   const lbClose     = document.getElementById('lightbox-close');
+  const lbPrev      = document.getElementById('lightbox-prev');
+  const lbNext      = document.getElementById('lightbox-next');
   if (!lightbox || !lbImg) return;
 
-  let lastFocused = null; // track element that opened lightbox
+  let lastFocused   = null; // track element that opened lightbox
+  let currentIndex  = -1;
+  let visibleItems  = []; // gallery items currently visible (respects filter)
 
   // Collect focusable elements within lightbox for focus trap
   function getFocusable() {
@@ -131,11 +135,33 @@
     )).filter(el => !el.disabled && el.offsetParent !== null);
   }
 
-  const openLightbox = (src, alt, triggerEl) => {
-    lastFocused = triggerEl || document.activeElement;
-    lbImg.src = src;
-    lbImg.alt = alt;
-    if (lbCaption) lbCaption.textContent = alt;
+  function getVisibleItems() {
+    return Array.from(document.querySelectorAll('.gallery-item:not(.hidden)'));
+  }
+
+  function updateNavButtons() {
+    if (lbPrev) lbPrev.disabled = currentIndex <= 0;
+    if (lbNext) lbNext.disabled = currentIndex >= visibleItems.length - 1;
+  }
+
+  const showItem = (index) => {
+    if (index < 0 || index >= visibleItems.length) return;
+    currentIndex = index;
+    const item = visibleItems[currentIndex];
+    const img = item.querySelector('img');
+    if (img) {
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      if (lbCaption) lbCaption.textContent = img.alt;
+    }
+    updateNavButtons();
+  };
+
+  const openLightbox = (itemEl) => {
+    visibleItems = getVisibleItems();
+    currentIndex = visibleItems.indexOf(itemEl);
+    lastFocused = itemEl || document.activeElement;
+    showItem(currentIndex);
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
     if (lbClose) lbClose.focus();
@@ -150,39 +176,48 @@
       lastFocused.focus();
     }
     lastFocused = null;
+    currentIndex = -1;
+    visibleItems = [];
+  };
+
+  const showPrev = () => {
+    if (currentIndex > 0) showItem(currentIndex - 1);
+  };
+
+  const showNext = () => {
+    if (currentIndex < visibleItems.length - 1) showItem(currentIndex + 1);
   };
 
   // Focus trap: keep Tab/Shift+Tab inside lightbox when open
   lightbox.addEventListener('keydown', (e) => {
-    if (e.key !== 'Tab') return;
-    const focusable = getFocusable();
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last  = focusable[focusable.length - 1];
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
-    } else {
-      if (document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
+    if (e.key === 'Tab') {
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     }
   });
 
   document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if (img) openLightbox(img.src, img.alt, item);
+      openLightbox(item);
     });
 
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        const img = item.querySelector('img');
-        if (img) openLightbox(img.src, img.alt, item);
+        openLightbox(item);
       }
     });
 
@@ -194,19 +229,43 @@
     lbClose.addEventListener('click', closeLightbox);
   }
 
+  if (lbPrev) {
+    lbPrev.addEventListener('click', showPrev);
+  }
+
+  if (lbNext) {
+    lbNext.addEventListener('click', showNext);
+  }
+
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') {
       closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      showPrev();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      showNext();
     }
   });
 })();
 
-/* ── 6. RAL NUANCIER ───────────────────────────────────────── */
+/* ── 6. RAL NUANCIER (lazy-rendered via IntersectionObserver) ── */
 (function initNuancier() {
+  const nuancierSection = document.getElementById('nuancier');
+  if (!nuancierSection) return;
+
+  let rendered = false;
+
+  function renderNuancier() {
+    if (rendered) return;
+    rendered = true;
+
   const ralColors = [
     { code: 'RAL 1000', name: 'Beige vert', hex: '#BEBD7F', cat: 'Jaune' },
     { code: 'RAL 1001', name: 'Beige', hex: '#C2B078', cat: 'Jaune' },
@@ -472,6 +531,23 @@
       filterSwatches();
     });
   }
+  } // end renderNuancier
+
+  // Trigger render when #nuancier is within 200px of viewport
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          renderNuancier();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '200px' });
+    observer.observe(nuancierSection);
+  } else {
+    // Fallback: render immediately if IntersectionObserver not supported
+    renderNuancier();
+  }
 })();
 
 /* ── 7. CONTACT FORM VALIDATION ────────────────────────────── */
@@ -489,7 +565,15 @@
     const errEl = document.getElementById(fieldId + '-error');
     const input = document.getElementById(fieldId);
     if (errEl) errEl.classList.toggle('visible', show);
-    if (input) input.classList.toggle('error', show);
+    if (input) {
+      input.classList.toggle('error', show);
+      // WCAG 3.3.1 — set aria-invalid when error state changes
+      if (show) {
+        input.setAttribute('aria-invalid', 'true');
+      } else {
+        input.setAttribute('aria-invalid', 'false');
+      }
+    }
   }
 
   function validateField(id, condition) {
