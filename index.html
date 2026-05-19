@@ -3,483 +3,265 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STV 83 — Sablage & Thermolaquage Varois | La Seyne-sur-Mer</title>
-  <meta name="description" content="STV 83, spécialiste du thermolaquage et sablage à La Seyne-sur-Mer (83). Traitement de surface professionnel pour portails, garde-corps, mobilier métallique. Devis gratuit.">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="STV 83 — Sablage & Thermolaquage Varois">
-  <meta property="og:description" content="Traitement de surface professionnel à La Seyne-sur-Mer. Thermolaquage, sablage, large nuancier RAL. Devis gratuit.">
-  <meta property="og:image" content="public/images/logo-xxl.png">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_FR">
-
-  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <meta name="description" content="STV 83 — Sablage et thermolaquage à La Seyne-sur-Mer. Notre nouveau site arrive très bientôt.">
+  <meta name="robots" content="noindex, follow">
+  <title>STV 83 — Nouveau site en préparation</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0F0F0F;
+      --charcoal: #1A1A1A;
+      --orange: #E5620B;
+      --orange-dark: #C44A00;
+      --light: #FAFAF7;
+      --gray: #888;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--light);
+      background: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(229, 98, 11, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(229, 98, 11, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%);
+    }
+
+    /* Animated background shapes */
+    .bg-shape {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bg-shape.s1 {
+      width: 400px; height: 400px;
+      background: var(--orange);
+      top: -100px; left: -100px;
+      animation: float 12s ease-in-out infinite;
+    }
+    .bg-shape.s2 {
+      width: 500px; height: 500px;
+      background: #722;
+      bottom: -150px; right: -150px;
+      animation: float 15s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(40px, -30px); }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .card {
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 48px;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(229, 98, 11, 0.15);
+      color: var(--orange);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      border: 1px solid rgba(229, 98, 11, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 .accent {
+      color: var(--orange);
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(250, 250, 247, 0.75);
+      line-height: 1.6;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 540px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--light);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-card:hover {
+      background: rgba(229, 98, 11, 0.1);
+      border-color: rgba(229, 98, 11, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .contact-card svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-card .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(250, 250, 247, 0.5);
+      font-weight: 600;
+    }
+
+    .contact-card .value {
+      font-size: 15px;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .activity {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .activity span {
+      font-size: 13px;
+      color: rgba(250, 250, 247, 0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .activity span::before {
+      content: "■ ";
+      color: var(--orange);
+      margin-right: 4px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: rgba(250, 250, 247, 0.4);
+    }
+
+    footer a {
+      color: rgba(250, 250, 247, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--orange); }
+  </style>
 </head>
 <body>
+  <div class="bg-shape s1"></div>
+  <div class="bg-shape s2"></div>
 
-  <a class="skip-link" href="#main">Aller au contenu principal</a>
+  <main>
+    <div class="card">
+      <img src="logo.png" alt="STV 83 — Sablage Thermolaquage Varois" class="logo">
 
-  <!-- ═══════════════════════════════════════════════════════════
-       HEADER / NAV
-  ════════════════════════════════════════════════════════════ -->
-  <header class="site-header" role="banner">
-    <div class="container">
-      <nav class="nav-inner" role="navigation" aria-label="Navigation principale">
-        <a href="index.html" class="nav-logo" aria-label="STV 83 — Accueil">
-          <img src="public/images/logo-noir.png" alt="STV 83 logo" width="120" height="44">
+      <span class="badge">Site en préparation</span>
+
+      <h1>Notre nouveau site<br>arrive <span class="accent">très bientôt</span></h1>
+
+      <p class="subtitle">
+        En attendant la mise en ligne de notre nouveau site,<br>
+        nous restons à votre disposition pour vos projets de sablage et thermolaquage.
+      </p>
+
+      <div class="contact-grid">
+        <a href="tel:+33760249313" class="contact-card">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="label">Téléphone</span>
+          <span class="value">07 60 24 93 13</span>
         </a>
+        <a href="mailto:contact.stv83@gmail.com" class="contact-card">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span class="label">Email</span>
+          <span class="value">contact.stv83@gmail.com</span>
+        </a>
+      </div>
 
-        <ul class="nav-menu" role="list">
-          <li><a href="index.html" class="active">Accueil</a></li>
-          <li><a href="index.html#galerie">Galerie</a></li>
-          <li><a href="index.html#nuancier">Nuancier</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-        <div class="nav-right">
-          <a href="tel:0760249313" class="btn btn-primary nav-cta" aria-label="Appeler le 07 60 24 93 13">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-            </svg>
-            07 60 24 93 13
-          </a>
-          <button class="hamburger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Ouvrir le menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </nav>
+      <div class="activity">
+        <span>Sablage</span>
+        <span>Thermolaquage</span>
+        <span>La Seyne-sur-Mer</span>
+      </div>
     </div>
-
-    <!-- Mobile nav -->
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Menu mobile">
-      <a href="index.html">Accueil</a>
-      <a href="index.html#galerie">Galerie</a>
-      <a href="index.html#nuancier">Nuancier</a>
-      <a href="contact.html">Contact</a>
-      <a href="tel:0760249313" class="mobile-phone">07 60 24 93 13</a>
-    </nav>
-  </header>
-
-  <main id="main">
-
-    <!-- ═══════════════════════════════════════════════════════
-         HERO
-    ════════════════════════════════════════════════════════ -->
-    <section class="hero" aria-label="Présentation STV 83">
-      <div class="hero-bg" role="img" aria-label="Portail thermolaqué — réalisation STV 83"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="container hero-content">
-        <p class="hero-eyebrow">La Seyne-sur-Mer — Var (83)</p>
-        <h1>
-          <span class="brand">STV 83</span><br>
-          Sablage &<br>Thermolaquage<br>Varois
-        </h1>
-        <p class="hero-sub">Traitement de surface professionnel à La Seyne-sur-Mer</p>
-        <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary">Demander un devis</a>
-          <a href="#galerie" class="btn btn-secondary">Voir la galerie</a>
-        </div>
-      </div>
-      <div class="hero-scroll" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6 9 12 15 18 9"/>
-        </svg>
-        <span>Découvrir</span>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         NOS VALEURS
-    ════════════════════════════════════════════════════════ -->
-    <section class="valeurs" aria-labelledby="valeurs-title">
-      <div class="container">
-        <div class="fade-in">
-          <h2 class="section-title" id="valeurs-title">Nos valeurs</h2>
-          <span class="accent-line" aria-hidden="true"></span>
-          <p class="valeurs-intro">
-            Nous ne cessons de croître, d'apprendre et de nous améliorer et nos partenaires ne cessent d'augmenter.
-            Riche de notre expérience et de notre savoir-faire, nous vous proposons les meilleures solutions adaptées
-            à tous vos besoins de traitement de vos ouvrages ou vos pièces techniques.
-          </p>
-        </div>
-
-        <div class="valeurs-grid">
-          <article class="valeur-card fade-in">
-            <p class="valeur-num" aria-hidden="true">01</p>
-            <h3>La résistance</h3>
-            <p>La résistance aux chocs et à la corrosion pour un résultat durable dans le temps.</p>
-          </article>
-          <article class="valeur-card fade-in">
-            <p class="valeur-num" aria-hidden="true">02</p>
-            <h3>L'uniformité</h3>
-            <p>L'uniformité du revêtement — absence de coulure, de sur-épaisseur — pour un rendu impeccable.</p>
-          </article>
-          <article class="valeur-card fade-in">
-            <p class="valeur-num" aria-hidden="true">03</p>
-            <h3>La dureté</h3>
-            <p>La dureté de surface, la tenue des couleurs, le large choix de teintes du nuancier RAL.</p>
-          </article>
-          <article class="valeur-card fade-in">
-            <p class="valeur-num" aria-hidden="true">04</p>
-            <h3>La possibilité</h3>
-            <p>La possibilité d'effets spéciaux tels que : effets rouillés, textures ou sablés.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         TOUT SAVOIR
-    ════════════════════════════════════════════════════════ -->
-    <section class="savoir" aria-labelledby="savoir-title">
-      <div class="container">
-        <div class="savoir-header fade-in">
-          <h2 class="section-title" id="savoir-title">Tout savoir sur le<br>Thermolaquage et le Sablage</h2>
-          <span class="accent-line" aria-hidden="true"></span>
-        </div>
-
-        <div class="savoir-layout">
-          <!-- Images décoratives -->
-          <div class="savoir-images fade-in" aria-hidden="true">
-            <img src="public/images/poudre.png"
-                 alt="Illustration poudre de thermolaquage"
-                 loading="lazy">
-            <img src="public/images/thermolaquage-1.jpg"
-                 alt="Opération de thermolaquage en atelier"
-                 loading="lazy">
-          </div>
-
-          <!-- Accordion FAQ -->
-          <div class="accordion">
-            <div class="accordion-item fade-in">
-              <button class="accordion-trigger"
-                      aria-expanded="false"
-                      aria-controls="acc-1">
-                Qu'est-ce que le thermolaquage ?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div id="acc-1" class="accordion-body" role="region">
-                <p>Le thermolaquage est un procédé de peinture (traitement de surface) qui consiste tout d'abord à
-                appliquer une peinture poudre (epoxy, polyester, mixte epoxy-polyester) par pistolage électrostatique.
-                Celle-ci va ensuite être polymérisée dans un four de cuisson à 200°C afin d'obtenir un film de peinture.
-                Cette étape durcit la poudre et la stabilise ainsi.</p>
-                <em>Remarque : le temps et la température varient en fonction de la densité et de la qualité de la pièce.</em>
-              </div>
-            </div>
-
-            <div class="accordion-item fade-in">
-              <button class="accordion-trigger"
-                      aria-expanded="false"
-                      aria-controls="acc-2">
-                Qu'est-ce que l'on peut thermolaquer ?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div id="acc-2" class="accordion-body" role="region">
-                <p>Toutes les pièces métalliques, qu'elles soient en acier, aluminium, inox, acier galvanisé, fonte…
-                Des pièces neuves ou à rénover, des petites ou des grandes… Des portails, des grilles, des tôles,
-                des rambardes, du mobilier urbain, des verrières, des salons de jardin, des radiateurs…</p>
-              </div>
-            </div>
-
-            <div class="accordion-item fade-in">
-              <button class="accordion-trigger"
-                      aria-expanded="false"
-                      aria-controls="acc-3">
-                Le sablage dans tout ça ?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div id="acc-3" class="accordion-body" role="region">
-                <p>Le sablage-grenaillage permet de remettre parfaitement à nu le matériau à décaper. La technique
-                consiste à projeter un abrasif avec une buse à air comprimé haute pression sur le matériau à décaper.
-                Le sablage grenaillage permet de : nettoyer et préparer les surfaces métalliques, éliminer la rouille
-                même en profondeur, éliminer les peintures anciennes.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item fade-in">
-              <button class="accordion-trigger"
-                      aria-expanded="false"
-                      aria-controls="acc-4">
-                Une durée de vie pour le thermolaquage ?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div id="acc-4" class="accordion-body" role="region">
-                <p>En fonction des produits utilisés, la durée de vie oscille entre 7 et 20 ans. Il s'agit d'un constat
-                moyen qui varie en fonction de l'environnement et des conditions d'utilisation. Chez STV, nous mettons
-                tout notre savoir-faire pour faire durer un maximum de temps votre produit une fois sorti de notre atelier.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         GALERIE
-    ════════════════════════════════════════════════════════ -->
-    <section id="galerie" class="galerie" aria-labelledby="galerie-title">
-      <div class="container">
-        <div class="galerie-header fade-in">
-          <h2 class="section-title" id="galerie-title">Galerie</h2>
-          <span class="accent-line" aria-hidden="true"></span>
-          <p class="section-subtitle">Découvrez nos réalisations en thermolaquage et sablage.</p>
-        </div>
-
-        <div class="filter-bar" role="group" aria-label="Filtrer la galerie par catégorie">
-          <button class="filter-btn active" data-filter="all">Tout</button>
-          <button class="filter-btn" data-filter="portails">Portails</button>
-          <button class="filter-btn" data-filter="garde-corps">Garde-corps</button>
-          <button class="filter-btn" data-filter="autres">Autres</button>
-        </div>
-
-        <div class="gallery-grid" role="list">
-          <div class="gallery-item" data-category="garde-corps" role="listitem">
-            <img src="public/images/garde-corps-1.jpg"
-                 alt="Garde-corps thermolaqué n°1 — réalisation STV 83"
-                 loading="lazy">
-            <div class="gallery-caption">
-              <span>Garde-corps n°1</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="garde-corps" role="listitem">
-            <img src="public/images/garde-corps-2.jpg"
-                 alt="Garde-corps thermolaqué n°2 — réalisation STV 83"
-                 loading="lazy">
-            <div class="gallery-caption">
-              <span>Garde-corps n°2</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="garde-corps" role="listitem">
-            <img src="public/images/garde-corps-3.jpg"
-                 alt="Garde-corps thermolaqué n°3 — réalisation STV 83"
-                 loading="lazy">
-            <div class="gallery-caption">
-              <span>Garde-corps n°3</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="autres" role="listitem">
-            <img src="public/images/piece-1.jpg"
-                 alt="Pièce technique thermolaquée n°1 — réalisation STV 83"
-                 loading="lazy">
-            <div class="gallery-caption">
-              <span>Pièce n°1</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="autres" role="listitem">
-            <img src="public/images/piece-2.jpg"
-                 alt="Pièce technique thermolaquée n°2 — réalisation STV 83"
-                 loading="lazy">
-            <div class="gallery-caption">
-              <span>Pièce n°2</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="portails" role="listitem">
-            <img src="public/images/portail-2.jpg"
-                 alt="Portail thermolaqué — réalisation STV 83"
-                 loading="lazy">
-            <div class="gallery-caption">
-              <span>Portail n°2</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image en plein écran">
-      <button id="lightbox-close" class="lightbox-close" aria-label="Fermer">&times;</button>
-      <img id="lightbox-img" class="lightbox-img" src="" alt="">
-      <p id="lightbox-caption" class="lightbox-caption"></p>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         NUANCIER RAL
-    ════════════════════════════════════════════════════════ -->
-    <section id="nuancier" class="nuancier" aria-labelledby="nuancier-title">
-      <div class="container">
-        <div class="fade-in">
-          <h2 class="section-title" id="nuancier-title">Nuancier RAL</h2>
-          <span class="accent-line" aria-hidden="true"></span>
-          <p class="section-subtitle">Plus de 180 teintes disponibles. Survolez une couleur pour afficher son nom.</p>
-        </div>
-
-        <div class="nuancier-controls fade-in">
-          <label for="ral-search" class="sr-only">Rechercher une couleur RAL</label>
-          <input type="search"
-                 id="ral-search"
-                 class="nuancier-search"
-                 placeholder="Rechercher (ex: RAL 7016, anthracite…)"
-                 aria-label="Rechercher une couleur RAL">
-        </div>
-
-        <div class="nuancier-cats filter-bar fade-in" role="group" aria-label="Filtrer par famille de couleur">
-          <button class="filter-btn active" data-ral-cat="all">Toutes</button>
-          <button class="filter-btn" data-ral-cat="Jaune">Jaune</button>
-          <button class="filter-btn" data-ral-cat="Orange">Orange</button>
-          <button class="filter-btn" data-ral-cat="Rouge">Rouge</button>
-          <button class="filter-btn" data-ral-cat="Violet">Violet</button>
-          <button class="filter-btn" data-ral-cat="Bleu">Bleu</button>
-          <button class="filter-btn" data-ral-cat="Vert">Vert</button>
-          <button class="filter-btn" data-ral-cat="Gris">Gris</button>
-          <button class="filter-btn" data-ral-cat="Brun">Brun</button>
-          <button class="filter-btn" data-ral-cat="Blanc/Noir">Blanc / Noir</button>
-        </div>
-
-        <div id="ral-grid" class="ral-grid" role="list" aria-label="Nuancier RAL">
-          <!-- Swatches injected by JS -->
-        </div>
-        <p id="ral-empty" class="nuancier-empty" role="status">Aucune couleur trouvée pour cette recherche.</p>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         AVIS CLIENTS
-    ════════════════════════════════════════════════════════ -->
-    <section class="avis" aria-labelledby="avis-title">
-      <div class="container">
-        <div class="fade-in">
-          <h2 class="section-title" id="avis-title">Avis clients</h2>
-          <span class="accent-line" aria-hidden="true"></span>
-        </div>
-
-        <div class="testimonials-grid">
-          <article class="testimonial-card fade-in">
-            <div class="stars" aria-label="5 étoiles sur 5">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-            </div>
-            <p class="testimonial-text">
-              « Un professionnalisme jamais vu ailleurs, après plusieurs devis un peu partout, j'ai fait le bon choix. »
-            </p>
-            <p class="testimonial-author">Anna Paulina</p>
-          </article>
-
-          <article class="testimonial-card fade-in">
-            <div class="stars" aria-label="5 étoiles sur 5">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-            </div>
-            <p class="testimonial-text">
-              « Merci encore, rien à dire, gentil et pro. Merci à toute l'équipe. »
-            </p>
-            <p class="testimonial-author">Kristina Lee</p>
-          </article>
-
-          <article class="testimonial-card fade-in">
-            <div class="stars" aria-label="5 étoiles sur 5">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-            </div>
-            <p class="testimonial-text">
-              « Un travail propre et rapide, merci à l'équipe pour mon tout nouveau portail. Je conseille fortement. »
-            </p>
-            <p class="testimonial-author">Pablo Gusterio</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         CTA BANDEAU
-    ════════════════════════════════════════════════════════ -->
-    <section class="cta-bandeau" aria-label="Appel à l'action — Demander un devis">
-      <div class="container">
-        <h2>Un projet en tête ?<br>Demandez votre devis</h2>
-        <a href="contact.html" class="btn btn-secondary">Nous contacter</a>
-      </div>
-    </section>
-
   </main>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-
-        <!-- Coordonnées -->
-        <div class="footer-col">
-          <div class="footer-brand">
-            <img src="public/images/logo-noir.png" alt="STV 83" width="120" height="40">
-          </div>
-          <h4>Coordonnées</h4>
-          <address>
-            <p>177 Montée batterie de la Montagne<br>83500 La Seyne-sur-Mer</p>
-            <p><a href="tel:0760249313">07 60 24 93 13</a></p>
-            <p><a href="mailto:contact.stv83@gmail.com">contact.stv83@gmail.com</a></p>
-          </address>
-          <div class="footer-social" aria-label="Réseaux sociaux">
-            <!-- Facebook -->
-            <a href="#" aria-label="Facebook STV 83" rel="noopener noreferrer" target="_blank">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-            </a>
-            <!-- Instagram -->
-            <a href="#" aria-label="Instagram STV 83" rel="noopener noreferrer" target="_blank">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
-                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
-                <circle cx="17.5" cy="6.5" r="1.5"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Navigation -->
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul class="footer-nav-list">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="index.html#galerie">Galerie</a></li>
-            <li><a href="index.html#nuancier">Nuancier RAL</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-          </ul>
-        </div>
-
-        <!-- Horaires -->
-        <div class="footer-col">
-          <h4>Horaires</h4>
-          <div class="horaires-list">
-            <div class="horaire-row"><span>Lundi</span><span>8h – 18h</span></div>
-            <div class="horaire-row"><span>Mardi</span><span>8h – 18h</span></div>
-            <div class="horaire-row"><span>Mercredi</span><span>8h – 18h</span></div>
-            <div class="horaire-row"><span>Jeudi</span><span>8h – 18h</span></div>
-            <div class="horaire-row"><span>Vendredi</span><span>8h – 18h</span></div>
-            <div class="horaire-row"><span>Samedi</span><span>Fermé</span></div>
-            <div class="horaire-row"><span>Dimanche</span><span>Fermé</span></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 STV 83 — Tous droits réservés</p>
-        <a href="mentions-legales.html">Mentions légales</a>
-      </div>
-    </div>
+  <footer>
+    © 2026 STV 83 — Sablage Thermolaquage Varois · 177 Montée batterie de la Montagne, 83500 La Seyne-sur-Mer
   </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,85 +1,49 @@
 # ============================================
-# STV 83 — Configuration Apache (OVH mutualisé)
+# STV 83 — Configuration racine (page d'attente)
+# Le vrai site est sous /preprod/ avec son propre .htaccess
 # ============================================
 
 RewriteEngine On
 
-# --------------------------------------------
-# 1. SÉCURITÉ — Bloquer les fichiers/dossiers cachés (.git, .env, etc.)
-# --------------------------------------------
+# 1. Sécurité — Bloquer les fichiers cachés
 RedirectMatch 404 /\.git
 RedirectMatch 404 /\.env
 RewriteRule "(^|/)\." - [F]
 
-# --------------------------------------------
-# 2. HTTPS — Forcer la connexion sécurisée
-# (utilise X-Forwarded-Proto, requis sur OVH derrière reverse proxy)
-# --------------------------------------------
+# 2. Forcer HTTPS (compatible reverse proxy OVH)
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# --------------------------------------------
-# 3. WWW — Rediriger www.stv83.fr vers stv83.fr (canonical sans www)
-# --------------------------------------------
+# 3. Canonical sans www
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
-# --------------------------------------------
-# 4. URLS PROPRES — Permettre /contact au lieu de /contact.html
-# --------------------------------------------
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^\.]+)$ $1.html [L]
+# 4. Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
 
-# --------------------------------------------
-# 5. CACHE — Mise en cache des assets statiques
-# --------------------------------------------
+# 5. Cache léger pour la page d'attente
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresDefault                              "access plus 1 month"
-  ExpiresByType text/html                     "access plus 0 seconds"
-  ExpiresByType text/css                      "access plus 1 month"
-  ExpiresByType application/javascript        "access plus 1 month"
-  ExpiresByType image/jpeg                    "access plus 1 year"
-  ExpiresByType image/png                     "access plus 1 year"
-  ExpiresByType image/webp                    "access plus 1 year"
-  ExpiresByType image/svg+xml                 "access plus 1 year"
-  ExpiresByType image/x-icon                  "access plus 1 year"
-  ExpiresByType font/woff2                    "access plus 1 year"
-  ExpiresByType font/woff                     "access plus 1 year"
+  ExpiresByType text/html  "access plus 0 seconds"
+  ExpiresByType image/png  "access plus 7 days"
 </IfModule>
 
-# --------------------------------------------
-# 6. COMPRESSION — Gzip pour les fichiers texte
-# --------------------------------------------
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html
-  AddOutputFilterByType DEFLATE text/css
-  AddOutputFilterByType DEFLATE text/plain
-  AddOutputFilterByType DEFLATE text/xml
-  AddOutputFilterByType DEFLATE application/javascript
-  AddOutputFilterByType DEFLATE application/json
-  AddOutputFilterByType DEFLATE application/xml
-  AddOutputFilterByType DEFLATE image/svg+xml
-</IfModule>
-
-# --------------------------------------------
-# 7. HEADERS DE SÉCURITÉ
-# --------------------------------------------
+# 6. Headers sécurité
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   Header unset X-Powered-By
 </IfModule>
 
-# --------------------------------------------
-# 8. CHARSET par défaut
-# --------------------------------------------
-AddDefaultCharset UTF-8
+# 7. Empêcher l'indexation Google de /preprod/ (page d'attente uniquement publique)
+<IfModule mod_headers.c>
+  <LocationMatch "^/preprod">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </LocationMatch>
+</IfModule>
 
-# --------------------------------------------
-# 9. INDEX par défaut
-# --------------------------------------------
-DirectoryIndex index.html index.htm
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
