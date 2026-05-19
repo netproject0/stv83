@@ -3,6 +3,33 @@
    Stylesheet — Mobile-first responsive
    ============================================================ */
 
+/* ── 0. SELF-HOSTED FONTS (Inter) ──────────────────────────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Inter-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/Inter-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/Inter-ExtraBold.woff2') format('woff2');
+}
+
 /* ── 1. RESET & BASE ───────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -96,16 +123,17 @@ button {
   transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
+/* Accessible orange: #C05200 gives 4.8:1 contrast ratio on white (WCAG AA pass) */
 .btn-primary {
-  background: var(--color-accent);
+  background: #C05200;
   color: var(--color-white);
-  border: 2px solid var(--color-accent);
+  border: 2px solid #C05200;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: var(--color-accent-dk);
-  border-color: var(--color-accent-dk);
+  background: #A34500;
+  border-color: #A34500;
 }
 
 .btn-secondary {
@@ -220,10 +248,11 @@ button {
   white-space: nowrap;
 }
 
+/* Accessible orange #C05200 on white background for nav links (WCAG AA) */
 .nav-menu a:hover,
 .nav-menu a.active {
-  color: var(--color-accent);
-  background: rgba(229,98,11,0.07);
+  color: #C05200;
+  background: rgba(192,82,0,0.07);
 }
 
 .nav-cta {
@@ -806,8 +835,8 @@ button {
 }
 
 .nuancier-search:focus {
-  outline: none;
   border-color: var(--color-accent);
+  /* outline handled globally by :focus-visible */
 }
 
 .nuancier-cats {
@@ -1027,7 +1056,7 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.65); /* was 0.4 — raised to meet WCAG AA on dark bg */
   margin-bottom: 1.25rem;
 }
 
@@ -1111,7 +1140,7 @@ button {
   align-items: center;
   justify-content: space-between;
   font-size: 0.8125rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.55); /* was 0.35 — raised for better legibility */
 }
 
 .footer-bottom a {
@@ -1341,8 +1370,8 @@ button {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: none;
   border-color: var(--color-accent);
+  /* outline handled globally by :focus-visible */
 }
 
 .form-group input.error,
@@ -1470,3 +1499,61 @@ button {
 }
 
 .skip-link:focus { top: 0; }
+
+/* ── 17. MAP STATIC LINK ───────────────────────────────────── */
+.map-link {
+  display: block;
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+}
+
+.map-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity var(--transition);
+}
+
+.map-link:hover img { opacity: 0.85; }
+
+.map-link__cta {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10,10,10,0.75);
+  color: var(--color-white);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* ── 18. FORM RGPD NOTICE ──────────────────────────────────── */
+.form-rgpd {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-top: 1rem;
+}
+
+.form-rgpd a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* ── 19. PREFERS-REDUCED-MOTION ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

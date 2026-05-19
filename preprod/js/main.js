@@ -86,12 +86,21 @@
   const items      = document.querySelectorAll('.gallery-item');
   if (!filterBtns.length || !items.length) return;
 
+  // Set initial aria-pressed state
+  filterBtns.forEach((btn, i) => {
+    btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+  });
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
 
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       items.forEach(item => {
         const cat = item.dataset.category;
@@ -113,32 +122,67 @@
   const lbClose     = document.getElementById('lightbox-close');
   if (!lightbox || !lbImg) return;
 
-  const openLightbox = (src, alt) => {
+  let lastFocused = null; // track element that opened lightbox
+
+  // Collect focusable elements within lightbox for focus trap
+  function getFocusable() {
+    return Array.from(lightbox.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )).filter(el => !el.disabled && el.offsetParent !== null);
+  }
+
+  const openLightbox = (src, alt, triggerEl) => {
+    lastFocused = triggerEl || document.activeElement;
     lbImg.src = src;
     lbImg.alt = alt;
     if (lbCaption) lbCaption.textContent = alt;
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
-    lbClose && lbClose.focus();
+    if (lbClose) lbClose.focus();
   };
 
   const closeLightbox = () => {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
     lbImg.src = '';
+    // Return focus to the element that opened the lightbox
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+    lastFocused = null;
   };
+
+  // Focus trap: keep Tab/Shift+Tab inside lightbox when open
+  lightbox.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
 
   document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
-      if (img) openLightbox(img.src, img.alt);
+      if (img) openLightbox(img.src, img.alt, item);
     });
 
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         const img = item.querySelector('img');
-        if (img) openLightbox(img.src, img.alt);
+        if (img) openLightbox(img.src, img.alt, item);
       }
     });
 
@@ -404,10 +448,19 @@
     }
   }
 
+  // Set initial aria-pressed on RAL category buttons
+  catBtns.forEach((btn, i) => {
+    btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+  });
+
   catBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      catBtns.forEach(b => b.classList.remove('active'));
+      catBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       activeCategory = btn.dataset.ralCat;
       filterSwatches();
     });
@@ -425,6 +478,9 @@
 (function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
+
+  // Honeypot: silently abort if bot filled the hidden website field
+  const honeypot = form.querySelector('[name="website"]');
 
   const successMsg = document.getElementById('form-success');
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -444,6 +500,13 @@
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    // Honeypot check: bots fill hidden fields, humans don't
+    if (honeypot && honeypot.value.trim() !== '') {
+      // Silently drop — show success to avoid tipping off bots
+      form.reset();
+      return;
+    }
 
     const name    = document.getElementById('f-nom');
     const email   = document.getElementById('f-email');
@@ -501,7 +564,22 @@
   });
 })();
 
-/* ── 8. INTERSECTION OBSERVER (fade-in) ────────────────────── */
+/* ── 8. EMAIL ANTI-SCRAPING ────────────────────────────────── */
+(function initEmailObfuscation() {
+  document.querySelectorAll('[data-email]').forEach(el => {
+    const parts = el.dataset.email.split('|');
+    if (parts.length < 2) return;
+    const email = parts[0] + '@' + parts[1];
+    if (el.tagName === 'A') {
+      el.href = 'mailto:' + email;
+    }
+    if (el.dataset.text === 'true') {
+      el.textContent = email;
+    }
+  });
+})();
+
+/* ── 9. INTERSECTION OBSERVER (fade-in) ────────────────────── */
 (function initFadeIn() {
   const targets = document.querySelectorAll('.fade-in');
   if (!targets.length || !('IntersectionObserver' in window)) {

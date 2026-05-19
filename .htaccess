@@ -3,6 +3,9 @@
 # Le vrai site est sous /preprod/ avec son propre .htaccess
 # ============================================
 
+Options -Indexes
+ServerSignature Off
+
 RewriteEngine On
 
 # 1. Sécurité — Bloquer les fichiers cachés
@@ -36,7 +39,18 @@ RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header unset X-Powered-By
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set X-XSS-Protection "0"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header unset Server
 </IfModule>
 
 AddDefaultCharset UTF-8
 DirectoryIndex index.html
+
+# Bloquer fichiers backup
+<FilesMatch "(\.(bak|old|orig|swp|tmp|sql|env)|~)$">
+  Require all denied
+</FilesMatch>

@@ -2,6 +2,9 @@
 # STV 83 — Configuration Apache (OVH mutualisé)
 # ============================================
 
+Options -Indexes
+ServerSignature Off
+
 RewriteEngine On
 
 # --------------------------------------------
@@ -70,9 +73,14 @@ RewriteRule ^([^\.]+)$ $1.html [L]
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   Header set X-Robots-Tag "noindex, nofollow"
   Header unset X-Powered-By
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://maps.gstatic.com https://*.googleapis.com; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'self'"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set X-XSS-Protection "0"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header unset Server
 </IfModule>
 
 # --------------------------------------------
@@ -84,3 +92,10 @@ AddDefaultCharset UTF-8
 # 9. INDEX par défaut
 # --------------------------------------------
 DirectoryIndex index.html index.htm
+
+# --------------------------------------------
+# 10. Bloquer fichiers backup
+# --------------------------------------------
+<FilesMatch "(\.(bak|old|orig|swp|tmp|sql|env)|~)$">
+  Require all denied
+</FilesMatch>

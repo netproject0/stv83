@@ -3,21 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STV 83 — Sablage & Thermolaquage Varois | La Seyne-sur-Mer</title>
-  <meta name="description" content="STV 83, spécialiste du thermolaquage et sablage à La Seyne-sur-Mer (83). Traitement de surface professionnel pour portails, garde-corps, mobilier métallique. Devis gratuit.">
+  <title>Thermolaquage & Sablage dans le Var — STV 83 La Seyne-sur-Mer</title>
+  <meta name="description" content="Atelier de thermolaquage et sablage à La Seyne-sur-Mer (83). Traitement de surface pour portails, garde-corps, mobilier métallique. Devis gratuit. ☎ 07 60 24 93 13">
+  <link rel="canonical" href="https://stv-83.fr/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="STV 83 — Sablage & Thermolaquage Varois">
-  <meta property="og:description" content="Traitement de surface professionnel à La Seyne-sur-Mer. Thermolaquage, sablage, large nuancier RAL. Devis gratuit.">
-  <meta property="og:image" content="public/images/logo-xxl.png">
   <meta property="og:type" content="website">
+  <meta property="og:title" content="STV 83 — Thermolaquage & Sablage dans le Var">
+  <meta property="og:description" content="Atelier de traitement de surface à La Seyne-sur-Mer. Sablage, grenaillage, thermolaquage de pièces métalliques.">
+  <meta property="og:url" content="https://stv-83.fr/">
+  <meta property="og:image" content="https://stv-83.fr/preprod/public/images/portail-2.jpg">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="1182">
   <meta property="og:locale" content="fr_FR">
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="STV 83 — Thermolaquage & Sablage Var">
+  <meta name="twitter:description" content="Traitement de surface pour pièces métalliques à La Seyne-sur-Mer.">
+  <meta name="twitter:image" content="https://stv-83.fr/preprod/public/images/portail-2.jpg">
+
   <link rel="icon" type="image/png" href="public/images/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Self-hosted Inter font preloads (no Google Fonts dependency) -->
+  <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="public/images/thermolaquage-2.jpg" fetchpriority="high">
+
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://stv-83.fr/#business",
+        "name": "STV 83 — Sablage Thermolaquage Varois",
+        "alternateName": "STV 83",
+        "description": "Atelier spécialisé dans le sablage, le grenaillage et le thermolaquage de pièces métalliques (portails, garde-corps, mobilier urbain) dans le Var.",
+        "image": "https://stv-83.fr/preprod/public/images/portail-2.jpg",
+        "logo": "https://stv-83.fr/logo.png",
+        "url": "https://stv-83.fr/",
+        "telephone": "+33760249313",
+        "email": "contact.stv83@gmail.com",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "177 Montée batterie de la Montagne",
+          "addressLocality": "La Seyne-sur-Mer",
+          "postalCode": "83500",
+          "addressRegion": "Provence-Alpes-Côte d'Azur",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 43.0942,
+          "longitude": 5.8800
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Var" },
+          { "@type": "AdministrativeArea", "name": "Provence-Alpes-Côte d'Azur" }
+        ],
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }],
+        "sameAs": [
+          "https://www.facebook.com/",
+          "https://www.instagram.com/"
+        ]
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Thermolaquage",
+        "provider": { "@id": "https://stv-83.fr/#business" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Var" },
+        "description": "Application de peinture poudre (époxy, polyester, mixte) par pistolage électrostatique puis polymérisation à 200°C sur pièces métalliques."
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Sablage / Grenaillage",
+        "provider": { "@id": "https://stv-83.fr/#business" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Var" },
+        "description": "Décapage par projection d'abrasif à haute pression pour mettre à nu les surfaces métalliques avant traitement."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce que le thermolaquage ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le thermolaquage est un procédé de peinture par poudre (époxy, polyester ou mixte) appliquée par pistolage électrostatique, puis polymérisée dans un four à 200°C pour former un revêtement dur et durable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce que l'on peut thermolaquer ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Toutes les pièces métalliques : acier, aluminium, inox, acier galvanisé, fonte. Portails, grilles, tôles, rambardes, mobilier urbain, verrières, salons de jardin, radiateurs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce que le sablage ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le sablage-grenaillage consiste à projeter un abrasif à haute pression pour nettoyer et préparer les surfaces métalliques, éliminer la rouille en profondeur et retirer les peintures anciennes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle est la durée de vie d'un thermolaquage ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La durée de vie d'un thermolaquage est de 7 à 20 ans selon les produits utilisés, l'environnement (proximité de la mer, UV) et les conditions d'utilisation."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://stv-83.fr/" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -30,7 +151,7 @@
     <div class="container">
       <nav class="nav-inner" role="navigation" aria-label="Navigation principale">
         <a href="index.html" class="nav-logo" aria-label="STV 83 — Accueil">
-          <img src="public/images/logo-noir.png" alt="STV 83 logo" width="120" height="44">
+          <img src="public/images/logo-noir.png" alt="STV 83 logo" width="120" height="46" loading="eager">
         </a>
 
         <ul class="nav-menu" role="list">
@@ -147,10 +268,12 @@
           <div class="savoir-images fade-in" aria-hidden="true">
             <img src="public/images/poudre.png"
                  alt="Illustration poudre de thermolaquage"
-                 loading="lazy">
+                 loading="lazy"
+                 width="339" height="728">
             <img src="public/images/thermolaquage-1.jpg"
                  alt="Opération de thermolaquage en atelier"
-                 loading="lazy">
+                 loading="lazy"
+                 width="1500" height="1000">
           </div>
 
           <!-- Accordion FAQ -->
@@ -240,7 +363,7 @@
           <div class="gallery-item" data-category="garde-corps" role="listitem">
             <img src="public/images/garde-corps-1.jpg"
                  alt="Garde-corps thermolaqué n°1 — réalisation STV 83"
-                 loading="lazy">
+                 loading="lazy" width="640" height="480">
             <div class="gallery-caption">
               <span>Garde-corps n°1</span>
             </div>
@@ -249,7 +372,7 @@
           <div class="gallery-item" data-category="garde-corps" role="listitem">
             <img src="public/images/garde-corps-2.jpg"
                  alt="Garde-corps thermolaqué n°2 — réalisation STV 83"
-                 loading="lazy">
+                 loading="lazy" width="480" height="640">
             <div class="gallery-caption">
               <span>Garde-corps n°2</span>
             </div>
@@ -258,7 +381,7 @@
           <div class="gallery-item" data-category="garde-corps" role="listitem">
             <img src="public/images/garde-corps-3.jpg"
                  alt="Garde-corps thermolaqué n°3 — réalisation STV 83"
-                 loading="lazy">
+                 loading="lazy" width="640" height="480">
             <div class="gallery-caption">
               <span>Garde-corps n°3</span>
             </div>
@@ -267,7 +390,7 @@
           <div class="gallery-item" data-category="autres" role="listitem">
             <img src="public/images/piece-1.jpg"
                  alt="Pièce technique thermolaquée n°1 — réalisation STV 83"
-                 loading="lazy">
+                 loading="lazy" width="1920" height="1280">
             <div class="gallery-caption">
               <span>Pièce n°1</span>
             </div>
@@ -276,7 +399,7 @@
           <div class="gallery-item" data-category="autres" role="listitem">
             <img src="public/images/piece-2.jpg"
                  alt="Pièce technique thermolaquée n°2 — réalisation STV 83"
-                 loading="lazy">
+                 loading="lazy" width="1000" height="666">
             <div class="gallery-caption">
               <span>Pièce n°2</span>
             </div>
@@ -285,7 +408,7 @@
           <div class="gallery-item" data-category="portails" role="listitem">
             <img src="public/images/portail-2.jpg"
                  alt="Portail thermolaqué — réalisation STV 83"
-                 loading="lazy">
+                 loading="lazy" width="1500" height="1182">
             <div class="gallery-caption">
               <span>Portail n°2</span>
             </div>
@@ -351,6 +474,7 @@
           <span class="accent-line" aria-hidden="true"></span>
         </div>
 
+        <!-- TODO: replace with real Google reviews. Anna Paulina, Kristina Lee, Pablo Gusterio are placeholder names — must be replaced with verified customer testimonials before public launch. -->
         <div class="testimonials-grid">
           <article class="testimonial-card fade-in">
             <div class="stars" aria-label="5 étoiles sur 5">
@@ -419,23 +543,24 @@
         <!-- Coordonnées -->
         <div class="footer-col">
           <div class="footer-brand">
-            <img src="public/images/logo-noir.png" alt="STV 83" width="120" height="40">
+            <img src="public/images/logo-noir.png" alt="STV 83" width="120" height="46" loading="lazy">
           </div>
           <h4>Coordonnées</h4>
           <address>
             <p>177 Montée batterie de la Montagne<br>83500 La Seyne-sur-Mer</p>
             <p><a href="tel:0760249313">07 60 24 93 13</a></p>
-            <p><a href="mailto:contact.stv83@gmail.com">contact.stv83@gmail.com</a></p>
+            <p><a href="#" data-email="contact.stv83|gmail.com" data-text="true">contact (at) stv83</a></p>
           </address>
           <div class="footer-social" aria-label="Réseaux sociaux">
+            <!-- TODO: replace with real STV 83 social media URLs once accounts created -->
             <!-- Facebook -->
-            <a href="#" aria-label="Facebook STV 83" rel="noopener noreferrer" target="_blank">
+            <a href="https://www.facebook.com/" aria-label="Facebook STV 83" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
             </a>
             <!-- Instagram -->
-            <a href="#" aria-label="Instagram STV 83" rel="noopener noreferrer" target="_blank">
+            <a href="https://www.instagram.com/" aria-label="Instagram STV 83" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
                 <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>

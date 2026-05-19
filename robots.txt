@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /preprod/
+
+Sitemap: https://stv-83.fr/sitemap.xml

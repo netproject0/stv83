@@ -14,9 +14,36 @@
   <meta property="og:url" content="https://stv-83.fr/">
   <meta property="og:image" content="https://stv-83.fr/logo.png">
   <meta property="og:locale" content="fr_FR">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Self-hosted Inter fonts (no Google Fonts dependency) -->
+  <link rel="preload" href="preprod/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="preprod/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('preprod/fonts/Inter-Regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 500;
+      font-display: swap;
+      src: url('preprod/fonts/Inter-Medium.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 700;
+      font-display: swap;
+      src: url('preprod/fonts/Inter-Bold.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 800;
+      font-display: swap;
+      src: url('preprod/fonts/Inter-ExtraBold.woff2') format('woff2');
+    }
+  </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -251,10 +278,10 @@
           <span class="label">Téléphone</span>
           <span class="value">07 60 24 93 13</span>
         </a>
-        <a href="mailto:contact.stv83@gmail.com" class="contact-card">
+        <a href="#" class="contact-card" data-email="contact.stv83|gmail.com">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span class="label">Email</span>
-          <span class="value">contact.stv83@gmail.com</span>
+          <span class="value" data-email="contact.stv83|gmail.com" data-text="true">contact (at) stv83</span>
         </a>
       </div>
 
@@ -269,5 +296,18 @@
   <footer>
     © 2026 STV 83 — Sablage Thermolaquage Varois · 177 Montée batterie de la Montagne, 83500 La Seyne-sur-Mer
   </footer>
+  <script>
+    // Email anti-scraping: assemble at runtime
+    document.querySelectorAll('[data-email]').forEach(function(el) {
+      var parts = el.dataset.email.split('|');
+      var email = parts[0] + '@' + parts[1];
+      if (el.tagName === 'A') {
+        el.href = 'mailto:' + email;
+      }
+      if (el.dataset.text === 'true') {
+        el.textContent = email;
+      }
+    });
+  </script>
 </body>
 </html>

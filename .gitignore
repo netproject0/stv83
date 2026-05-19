@@ -33,3 +33,6 @@ temp/
 dist/
 build/
 node_modules/
+
+# Audits internes (ne pas déployer publiquement)
+analyse-*/

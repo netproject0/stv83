@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentions légales — STV 83</title>
-  <meta name="description" content="Mentions légales du site STV 83 — Sablage Thermolaquage Varois, La Seyne-sur-Mer.">
+  <title>Mentions légales — STV 83 Sablage Thermolaquage Varois</title>
+  <meta name="description" content="Mentions légales de STV 83, atelier de thermolaquage à La Seyne-sur-Mer. Société, hébergeur, RGPD, propriété intellectuelle.">
+  <meta name="robots" content="noindex, follow">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Mentions légales — STV 83">
   <meta property="og:description" content="Informations légales du site STV 83 — Sablage Thermolaquage Varois.">
-  <meta property="og:image" content="public/images/logo-xxl.png">
+  <meta property="og:image" content="https://stv-83.fr/preprod/public/images/portail-2.jpg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
 
   <link rel="icon" type="image/png" href="public/images/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Self-hosted Inter font preloads -->
+  <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -90,11 +93,18 @@
             <p>SIRET : 87924197400010</p>
             <p>R.C.S. Toulon</p>
             <p>N° TVA intracommunautaire : FR84879241974</p>
-            <p>Statut : Société civile immobilière</p>
+            <!-- TODO client: forme juridique exacte (SARL ? EURL ?) — SCI invraisemblable pour activité industrielle -->
+            <p>Statut : À confirmer par le client</p>
             <p>Capital social : 2 000 €</p>
             <p>Adresse : 177 Montée batterie de la Montagne, 83500 La Seyne-sur-Mer</p>
-            <p>Téléphone : <a href="tel:0412040011">04.12.04.00.11</a></p>
-            <p>Email : <a href="mailto:contact.stv83@gmail.com">contact.stv83@gmail.com</a></p>
+            <p>Téléphone : <a href="tel:0760249313">07 60 24 93 13</a></p>
+            <p>Email : <a href="#" data-email="contact.stv83|gmail.com" data-text="true">contact (at) stv83</a></p>
+          </div>
+
+          <div class="legal-block">
+            <h2>Directeur de la publication</h2>
+            <!-- TODO client: indiquer le nom du gérant légal de STV 83 -->
+            <p>[Nom du gérant — à compléter]</p>
           </div>
 
           <div class="legal-block">
@@ -102,6 +112,7 @@
             <p><strong>OVH SAS</strong></p>
             <p>2 rue Kellermann<br>59100 Roubaix<br>France</p>
             <p>Site : <a href="https://www.ovhcloud.com" target="_blank" rel="noopener noreferrer">www.ovhcloud.com</a></p>
+            <p>Téléphone : 1007 (gratuit depuis un poste OVH) ou +33 (0)9 72 10 10 07</p>
           </div>
 
           <div class="legal-block">
@@ -124,12 +135,28 @@
               répondre à votre demande. Elles ne sont ni vendues, ni transmises à des tiers.
             </p>
             <p>
-              Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et
-              Libertés du 6 janvier 1978 modifiée, vous disposez d'un droit d'accès, de rectification, de limitation
-              et de suppression des données vous concernant.
+              <strong>Base légale :</strong> exécution de mesures précontractuelles (art. 6.1.b RGPD) pour le formulaire de contact.
             </p>
             <p>
-              Pour exercer ce droit, contactez : <a href="mailto:contact.stv83@gmail.com">contact.stv83@gmail.com</a>
+              <strong>Durée de conservation :</strong> 3 ans à compter du dernier contact.
+            </p>
+            <p>
+              <strong>Destinataires :</strong> STV 83 uniquement.
+            </p>
+            <p>
+              <strong>Droits :</strong> conformément au RGPD et à la loi Informatique et Libertés du 6 janvier 1978 modifiée,
+              vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de portabilité et de limitation
+              des données vous concernant.
+            </p>
+            <p>
+              Pour exercer ces droits, contactez : <a href="#" data-email="contact.stv83|gmail.com" data-text="true">contact (at) stv83</a>
+            </p>
+            <p>
+              <strong>Réclamation :</strong> vous pouvez également introduire une réclamation auprès de la CNIL — <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
+            </p>
+            <p>
+              <strong>Transferts hors UE :</strong> les messages envoyés via le formulaire de contact sont routés via Google/Gmail (États-Unis),
+              opérateur soumis au Data Privacy Framework UE-USA en vigueur. Aucun autre transfert hors Union européenne n'est effectué.
             </p>
           </div>
 
@@ -175,21 +202,22 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-brand">
-            <img src="public/images/logo-noir.png" alt="STV 83" width="120" height="40">
+            <img src="public/images/logo-noir.png" alt="STV 83" width="120" height="46" loading="lazy">
           </div>
           <h4>Coordonnées</h4>
           <address>
             <p>177 Montée batterie de la Montagne<br>83500 La Seyne-sur-Mer</p>
             <p><a href="tel:0760249313">07 60 24 93 13</a></p>
-            <p><a href="mailto:contact.stv83@gmail.com">contact.stv83@gmail.com</a></p>
+            <p><a href="#" data-email="contact.stv83|gmail.com" data-text="true">contact (at) stv83</a></p>
           </address>
+          <!-- TODO: replace with real STV 83 social media URLs once accounts created -->
           <div class="footer-social" aria-label="Réseaux sociaux">
-            <a href="#" aria-label="Facebook STV 83" rel="noopener noreferrer" target="_blank">
+            <a href="https://www.facebook.com/" aria-label="Facebook STV 83" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
             </a>
-            <a href="#" aria-label="Instagram STV 83" rel="noopener noreferrer" target="_blank">
+            <a href="https://www.instagram.com/" aria-label="Instagram STV 83" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
                 <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
