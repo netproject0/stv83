@@ -209,20 +209,12 @@
     }
   });
 
+  // Gallery items are native <button> elements — click, focus, and
+  // Enter/Space keyboard activation are handled natively by the browser.
   document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
       openLightbox(item);
     });
-
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openLightbox(item);
-      }
-    });
-
-    item.setAttribute('tabindex', '0');
-    item.setAttribute('role', 'button');
   });
 
   if (lbClose) {
