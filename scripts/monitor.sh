@@ -22,7 +22,7 @@
 # Dépendances : curl, jq, openssl
 # ============================================================
 
-set -u
+set +u  # Pas de strict mode pour compat bash 3 (macOS)
 
 # CONFIG
 SITE_URL="${SITE_URL:-https://stv-83.fr}"
@@ -47,8 +47,14 @@ else
   NC=""
 fi
 
-# RÉSULTATS (pour JSON)
-declare -A RESULTS
+# RÉSULTATS (collectés dans un fichier tmp pour compat bash 3 macOS)
+RESULTS_FILE=$(mktemp -t stv83-monitor.XXXXXX)
+trap 'rm -f "$RESULTS_FILE"' EXIT
+
+# Helper compat bash 3 : put_result "key" "value" → put_result key value
+put_result() {
+  echo "$1=$2" >> "$RESULTS_FILE"
+}
 
 # ──────────────────────────────────────────────────────────────
 # 1. HTTP availability
@@ -56,7 +62,7 @@ declare -A RESULTS
 check_http() {
   local code
   code=$(curl -sS -o /dev/null -w "%{http_code}" --max-time "$TIMEOUT" "$SITE_URL" 2>/dev/null || echo "000")
-  RESULTS["http_code"]="$code"
+  put_result "http_code" "$code"
   if [[ "$code" == "200" ]]; then
     echo "${GREEN}✓${NC} HTTP $code — site joignable"
     return 0
@@ -77,7 +83,7 @@ check_ssl() {
 
   if [[ -z "$expiry" ]]; then
     echo "${RED}✗${NC} SSL — impossible de récupérer le certificat"
-    RESULTS["ssl_days_left"]="-1"
+    put_result "ssl_days_left" "-1"
     return 1
   fi
 
@@ -89,8 +95,8 @@ check_ssl() {
   now_ts=$(date "+%s")
   local days_left=$(( (expiry_ts - now_ts) / 86400 ))
 
-  RESULTS["ssl_days_left"]="$days_left"
-  RESULTS["ssl_expiry"]="$expiry"
+  put_result "ssl_days_left" "$days_left"
+  put_result "ssl_expiry" "$expiry"
 
   if [[ $days_left -gt 30 ]]; then
     echo "${GREEN}✓${NC} SSL — expire dans $days_left jours ($expiry)"
@@ -123,15 +129,15 @@ check_headers() {
   for h in "${required[@]}"; do
     if echo "$headers" | grep -qi "^$h:"; then
       echo "  ${GREEN}✓${NC} $h"
-      RESULTS["header_$h"]="present"
+      put_result "header_$h" "present"
     else
       echo "  ${RED}✗${NC} $h MANQUANT"
-      RESULTS["header_$h"]="missing"
+      put_result "header_$h" "missing"
       missing=$((missing+1))
     fi
   done
 
-  RESULTS["headers_missing"]="$missing"
+  put_result "headers_missing" "$missing"
   return $missing
 }
 
@@ -144,7 +150,7 @@ check_securityheaders() {
   grade=$(echo "$response" | grep -i '^x-grade:' | head -1 | awk '{print $2}' | tr -d '\r\n')
 
   if [[ -n "$grade" ]]; then
-    RESULTS["securityheaders_grade"]="$grade"
+    put_result "securityheaders_grade" "$grade"
     case "$grade" in
       A+|A) echo "${GREEN}✓${NC} securityheaders.com — Grade $grade" ;;
       B|C)  echo "${YELLOW}!${NC} securityheaders.com — Grade $grade (à améliorer)" ;;
@@ -152,7 +158,7 @@ check_securityheaders() {
     esac
   else
     echo "${YELLOW}!${NC} securityheaders.com — API non joignable"
-    RESULTS["securityheaders_grade"]="unknown"
+    put_result "securityheaders_grade" "unknown"
   fi
 }
 
@@ -168,8 +174,8 @@ check_observatory() {
   grade=$(echo "$response" | grep -oE '"grade"[[:space:]]*:[[:space:]]*"[^"]+"' | head -1 | grep -oE '"[^"]+"$' | tr -d '"')
 
   if [[ -n "${score:-}" && -n "${grade:-}" ]]; then
-    RESULTS["observatory_score"]="$score"
-    RESULTS["observatory_grade"]="$grade"
+    put_result "observatory_score" "$score"
+    put_result "observatory_grade" "$grade"
     case "$grade" in
       A+|A|A-) echo "${GREEN}✓${NC} Mozilla Observatory — Grade $grade ($score/100)" ;;
       B*|C*)   echo "${YELLOW}!${NC} Mozilla Observatory — Grade $grade ($score/100)" ;;
@@ -177,7 +183,7 @@ check_observatory() {
     esac
   else
     echo "${YELLOW}!${NC} Mozilla Observatory — résultat indisponible (peut prendre quelques minutes après 1er scan)"
-    RESULTS["observatory_grade"]="pending"
+    put_result "observatory_grade" "pending"
   fi
 }
 
@@ -192,10 +198,10 @@ check_robots_sitemap() {
     code=$(curl -sS -o /dev/null -w "%{http_code}" --max-time "$TIMEOUT" "${SITE_URL}${f}" 2>/dev/null || echo "000")
     if [[ "$code" == "200" ]]; then
       echo "  ${GREEN}✓${NC} ${f} (HTTP 200)"
-      RESULTS["file${f//\//_}"]="present"
+      put_result "file${f//\//_}" "present"
     else
       echo "  ${RED}✗${NC} ${f} (HTTP $code)"
-      RESULTS["file${f//\//_}"]="missing"
+      put_result "file${f//\//_}" "missing"
     fi
   done
 }
@@ -207,7 +213,7 @@ check_jsonld() {
   local count
   count=$(curl -sS --max-time "$TIMEOUT" "$SITE_URL" 2>/dev/null \
     | grep -c 'application/ld+json' || true)
-  RESULTS["jsonld_blocks"]="$count"
+  put_result "jsonld_blocks" "$count"
   echo ""
   if [[ $count -gt 0 ]]; then
     echo "${GREEN}✓${NC} JSON-LD : $count bloc(s) trouvé(s) sur la homepage"
@@ -224,7 +230,7 @@ check_ttfb() {
   ttfb=$(curl -sS -o /dev/null --max-time "$TIMEOUT" -w "%{time_starttransfer}" "$SITE_URL" 2>/dev/null || echo "0")
   local ttfb_ms
   ttfb_ms=$(awk "BEGIN {printf \"%.0f\", $ttfb * 1000}")
-  RESULTS["ttfb_ms"]="$ttfb_ms"
+  put_result "ttfb_ms" "$ttfb_ms"
 
   if [[ $ttfb_ms -lt 500 ]]; then
     echo "${GREEN}✓${NC} TTFB : ${ttfb_ms} ms"
@@ -243,10 +249,13 @@ output_json() {
   echo "  \"timestamp\": \"$(date -u +%FT%TZ)\","
   echo "  \"site\": \"$SITE_URL\","
   local first=1
-  for k in "${!RESULTS[@]}"; do
+  while IFS='=' read -r k v; do
+    [[ -z "$k" ]] && continue
     if [[ $first -eq 1 ]]; then first=0; else echo ","; fi
-    echo -n "  \"$k\": \"${RESULTS[$k]}\""
-  done
+    # Échappement basique des guillemets dans la valeur
+    v_escaped=$(printf '%s' "$v" | sed 's/"/\\"/g')
+    echo -n "  \"$k\": \"$v_escaped\""
+  done < "$RESULTS_FILE"
   echo ""
   echo "}"
 }
