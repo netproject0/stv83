@@ -36,3 +36,12 @@ node_modules/
 
 # Audits internes (ne pas déployer publiquement)
 analyse-*/
+
+# Scraper IG : artefacts d'exécution (le code source reste versionné)
+scripts/ig-scraper/.venv/
+scripts/ig-scraper/__pycache__/
+scripts/ig-scraper/probe-out/
+scripts/ig-scraper/pyproject.toml.bak
+
+# Exports bruts Instagram (les visuels retenus sont copiés vers preprod/public/images/)
+assets/instagram-export/

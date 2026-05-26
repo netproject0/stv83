@@ -1268,8 +1268,6 @@ button {
 .footer-brand img {
   height: 40px;
   margin-bottom: 1rem;
-  opacity: 0.85;
-  filter: brightness(0) invert(1);
 }
 
 .footer-col h4 {
