@@ -163,7 +163,9 @@
     const item = visibleItems[currentIndex];
     const img = item.querySelector('img');
     if (img) {
-      lbImg.src = img.currentSrc || img.src;
+      // currentSrc respecte le choix webp/jpg du navigateur ; on retire le
+      // suffixe -600 des vignettes srcset pour afficher la pleine taille
+      lbImg.src = (img.currentSrc || img.src).replace('-600.', '.');
       lbImg.alt = img.alt;
       if (lbCaption) lbCaption.textContent = img.alt;
     }
