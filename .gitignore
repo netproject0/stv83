@@ -45,3 +45,7 @@ scripts/ig-scraper/pyproject.toml.bak
 
 # Exports bruts Instagram (les visuels retenus sont copiés vers preprod/public/images/)
 assets/instagram-export/
+
+# Photos sources client (brutes, jamais deployees ni versionnees)
+assets/images-sources/
+assets/images-sources2/
