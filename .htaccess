@@ -35,6 +35,14 @@ RewriteRule ^preprod/?$ / [L,R=301]
 RewriteRule ^preprod/(.*)$ /$1 [L,R=301]
 
 # --------------------------------------------
+# 4b. OUTILLAGE INTERNE — scripts/ et docs ne sont pas servis
+# --------------------------------------------
+RewriteRule ^scripts(/.*)?$ - [F]
+<FilesMatch "\.md$">
+  Require all denied
+</FilesMatch>
+
+# --------------------------------------------
 # 5. URLS PROPRES — Permettre /contact au lieu de /contact.html
 # --------------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-d
