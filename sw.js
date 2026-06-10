@@ -1,6 +1,6 @@
 /* ============================================================
    STV 83 — Service Worker
-   Scope: /preprod/
+   Scope: /
    Strategy:
      - Cache-first  → static assets (CSS, JS, fonts, images)
      - Network-first with cache fallback → HTML pages
@@ -9,15 +9,15 @@
 
 'use strict';
 
-const CACHE_VERSION = 'stv83-v6';
+const CACHE_VERSION = 'stv83-v7';
 
 const PRECACHE_ASSETS = [
-  '/preprod/index.html',
-  '/preprod/css/style.css',
-  '/preprod/js/main.js',
-  '/preprod/fonts/Inter-Regular.woff2',
-  '/preprod/fonts/Inter-Bold.woff2',
-  '/preprod/public/images/logo-noir.webp',
+  '/index.html',
+  '/css/style.css',
+  '/js/main.js',
+  '/fonts/Inter-Regular.woff2',
+  '/fonts/Inter-Bold.woff2',
+  '/public/images/logo-noir.webp',
 ];
 
 const STATIC_EXTENSIONS = /\.(css|js|woff2|webp|jpg|jpeg|png|svg|ico)(\?.*)?$/i;
@@ -135,7 +135,7 @@ function offlineFallback() {
   <div class="card">
     <h1>Vous êtes hors ligne</h1>
     <p>Cette page n'est pas disponible sans connexion internet. Vérifiez votre réseau et réessayez.</p>
-    <a href="/preprod/">Retour à l'accueil</a>
+    <a href="/">Retour à l'accueil</a>
   </div>
 </body>
 </html>`;
