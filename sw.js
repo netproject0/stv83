@@ -9,7 +9,7 @@
 
 'use strict';
 
-const CACHE_VERSION = 'stv83-v5';
+const CACHE_VERSION = 'stv83-v6';
 
 const PRECACHE_ASSETS = [
   '/preprod/index.html',
