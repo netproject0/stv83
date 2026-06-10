@@ -695,8 +695,14 @@ button {
   border-radius: var(--radius-sm);
 }
 
-.savoir-images img:first-child {
+.savoir-images picture:first-child {
   margin-top: 2rem;
+}
+
+/* poudre.png : PNG transparent 339x728 (colonne de 4 tas de poudre),
+   bien plus haut que 3/4 — contain pour ne couper aucun tas */
+.savoir-images picture:first-child img {
+  object-fit: contain;
 }
 
 .accordion {
