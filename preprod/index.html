@@ -30,7 +30,7 @@
   <link rel="preload" href="fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="public/images/thermolaquage-2.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="public/images/thermolaquage-2.webp" type="image/webp" fetchpriority="high">
 
   <!-- Critical CSS: above-the-fold styles inlined to eliminate render-blocking on LCP path -->
   <style>
@@ -71,7 +71,7 @@
     .mobile-nav.open{display:flex}
     @media(min-width:768px){.nav-menu{display:flex}.nav-cta{display:inline-flex}.hamburger{display:none}}
     .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;background-image:url('public/images/thermolaquage-2.jpg');background-size:cover;background-position:center 40%;background-repeat:no-repeat;will-change:transform}
+    .hero-bg{position:absolute;inset:0;background-image:url('public/images/thermolaquage-2.jpg');background-image:image-set(url('public/images/thermolaquage-2.webp') type('image/webp'),url('public/images/thermolaquage-2.jpg') type('image/jpeg'));background-size:cover;background-position:center 40%;background-repeat:no-repeat;will-change:transform}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,.55) 60%,rgba(229,98,11,.18) 100%)}
     .hero-content{position:relative;z-index:2;padding-block:5rem 4rem}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--color-accent);margin-bottom:1.25rem}
@@ -102,7 +102,13 @@
         "legalName": "SABLAGE THERMOLAQUAGE VAROIS",
         "alternateName": "STV 83",
         "description": "Atelier spécialisé dans le sablage, le grenaillage et le thermolaquage de pièces métalliques (portails, garde-corps, mobilier urbain, pièces techniques) à La Seyne-sur-Mer (Var, 83). Entreprise SAS créée en janvier 2020.",
-        "image": "https://stv-83.fr/preprod/public/images/portail-2.jpg",
+        "image": [
+          "https://stv-83.fr/preprod/public/images/portail-2.jpg",
+          "https://stv-83.fr/preprod/public/images/portail-3.jpg",
+          "https://stv-83.fr/preprod/public/images/garde-corps-6.jpg",
+          "https://stv-83.fr/preprod/public/images/atelier-3.jpg",
+          "https://stv-83.fr/preprod/public/images/thermolaquage-3.jpg"
+        ],
         "logo": "https://stv-83.fr/logo.png",
         "url": "https://stv-83.fr/",
         "telephone": "+33760249313",
@@ -575,8 +581,9 @@
           <button class="filter-btn" data-filter="garde-corps">Garde-corps</button>
           <button class="filter-btn" data-filter="autres">Autres</button>
         </div>
+        <p id="filter-status" class="sr-only" role="status"></p>
 
-        <div class="gallery-grid" role="list">
+        <div class="gallery-grid">
           <button type="button" class="gallery-item" data-category="garde-corps" aria-label="Voir l'image en grand : Garde-corps n°1">
             <picture>
               <source srcset="public/images/garde-corps-1.webp" type="image/webp">
@@ -785,7 +792,7 @@
             <picture>
               <source srcset="public/images/moto-1.webp" type="image/webp">
               <img src="public/images/moto-1.jpg"
-                   alt="Cadre et jantes de moto thermolaqués blanc sur la chaîne de thermolaquage — STV 83"
+                   alt="Cadre et jantes de moto thermolaqués blanc, suspendus avant cuisson — STV 83"
                    loading="lazy" width="1200" height="900">
             </picture>
             <div class="gallery-caption">
@@ -797,7 +804,7 @@
             <picture>
               <source srcset="public/images/mobilier-1.webp" type="image/webp">
               <img src="public/images/mobilier-1.jpg"
-                   alt="Série de tables métalliques thermolaquées marron — production en série STV 83 Var"
+                   alt="Tables métalliques thermolaquées marron prêtes à livrer — STV 83 Var"
                    loading="lazy" width="900" height="1200">
             </picture>
             <div class="gallery-caption">
@@ -821,7 +828,7 @@
             <picture>
               <source srcset="public/images/portail-4.webp" type="image/webp">
               <img src="public/images/portail-4.jpg"
-                   alt="Préparation d'un vantail de portail découpe laser avant thermolaquage — atelier STV 83 La Seyne-sur-Mer"
+                   alt="Vantail de portail découpe laser sablé, en préparation avant thermolaquage — atelier STV 83 La Seyne-sur-Mer"
                    loading="lazy" width="900" height="1200">
             </picture>
             <div class="gallery-caption">
@@ -874,7 +881,7 @@
       <button id="lightbox-prev" class="lightbox-prev" aria-label="Image précédente">&#8249;</button>
       <button id="lightbox-next" class="lightbox-next" aria-label="Image suivante">&#8250;</button>
       <img id="lightbox-img" class="lightbox-img" src="" alt="">
-      <p id="lightbox-caption" class="lightbox-caption"></p>
+      <p id="lightbox-caption" class="lightbox-caption" aria-live="polite"></p>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -910,7 +917,7 @@
           <button class="filter-btn" data-ral-cat="Blanc/Noir">Blanc / Noir</button>
         </div>
 
-        <div id="ral-grid" class="ral-grid" role="list" aria-label="Nuancier RAL">
+        <div id="ral-grid" class="ral-grid" role="group" aria-label="Nuancier RAL">
           <!-- Swatches injected by JS -->
         </div>
         <p id="ral-empty" class="nuancier-empty" role="status">Aucune couleur trouvée pour cette recherche.</p>

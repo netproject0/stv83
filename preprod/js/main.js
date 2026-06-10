@@ -102,14 +102,21 @@
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
 
+      let shown = 0;
       items.forEach(item => {
         const cat = item.dataset.category;
         if (filter === 'all' || cat === filter) {
           item.classList.remove('hidden');
+          shown++;
         } else {
           item.classList.add('hidden');
         }
       });
+
+      const status = document.getElementById('filter-status');
+      if (status) {
+        status.textContent = `${shown} réalisation${shown > 1 ? 's' : ''} affichée${shown > 1 ? 's' : ''} — filtre ${btn.textContent.trim()}`;
+      }
     });
   });
 })();
@@ -140,8 +147,14 @@
   }
 
   function updateNavButtons() {
-    if (lbPrev) lbPrev.disabled = currentIndex <= 0;
-    if (lbNext) lbNext.disabled = currentIndex >= visibleItems.length - 1;
+    const disablePrev = currentIndex <= 0;
+    const disableNext = currentIndex >= visibleItems.length - 1;
+    // Deplacer le focus avant de desactiver le bouton qui le porte,
+    // sinon le focus tombe sur <body> et sort du dialog modal
+    if (lbPrev && disablePrev && document.activeElement === lbPrev && lbClose) lbClose.focus();
+    if (lbNext && disableNext && document.activeElement === lbNext && lbClose) lbClose.focus();
+    if (lbPrev) lbPrev.disabled = disablePrev;
+    if (lbNext) lbNext.disabled = disableNext;
   }
 
   const showItem = (index) => {
@@ -150,7 +163,7 @@
     const item = visibleItems[currentIndex];
     const img = item.querySelector('img');
     if (img) {
-      lbImg.src = img.src;
+      lbImg.src = img.currentSrc || img.src;
       lbImg.alt = img.alt;
       if (lbCaption) lbCaption.textContent = img.alt;
     }
