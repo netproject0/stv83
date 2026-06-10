@@ -379,7 +379,9 @@ button {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-block: 5rem 4rem;
+  /* 7rem en bas : reserve l'espace du .hero-scroll (bottom 2rem + ~3rem de haut)
+     pour qu'il ne chevauche jamais les boutons CTA quand ils passent sur 2 lignes */
+  padding-block: 5rem 7rem;
 }
 
 .hero-eyebrow {
@@ -455,6 +457,10 @@ button {
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+@media (max-height: 640px) {
+  .hero-scroll { display: none; }
 }
 
 /* ── 5. SECTION : NOS VALEURS ──────────────────────────────── */
