@@ -1,6 +1,6 @@
 # ============================================
-# STV 83 — Configuration racine (page d'attente)
-# Le vrai site est sous /preprod/ avec son propre .htaccess
+# STV 83 — Configuration Apache (OVH mutualisé)
+# Site en production à la racine depuis le 10 juin 2026
 # ============================================
 
 Options -Indexes
@@ -8,54 +8,106 @@ ServerSignature Off
 
 RewriteEngine On
 
-# 1. Sécurité — Bloquer les fichiers cachés
+# --------------------------------------------
+# 1. SÉCURITÉ — Bloquer les fichiers/dossiers cachés (.git, .env, etc.)
+# --------------------------------------------
 RedirectMatch 404 /\.git
 RedirectMatch 404 /\.env
 RewriteRule "(^|/)\." - [F]
 
-# 2. Forcer HTTPS (compatible reverse proxy OVH)
+# --------------------------------------------
+# 2. HTTPS — Forcer la connexion sécurisée
+# (utilise X-Forwarded-Proto, requis sur OVH derrière reverse proxy)
+# --------------------------------------------
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 3. Canonical sans www
+# --------------------------------------------
+# 3. WWW — Rediriger www.stv-83.fr vers stv-83.fr (canonical sans www)
+# --------------------------------------------
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
-# 4. Compression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
-</IfModule>
+# --------------------------------------------
+# 4. MIGRATION — L'ancien staging /preprod/ redirige vers la racine
+# --------------------------------------------
+RewriteRule ^preprod/?$ / [L,R=301]
+RewriteRule ^preprod/(.*)$ /$1 [L,R=301]
 
-# 5. Cache léger pour la page d'attente
+# --------------------------------------------
+# 5. URLS PROPRES — Permettre /contact au lieu de /contact.html
+# --------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^\.]+)$ $1.html [L]
+
+# --------------------------------------------
+# 6. CACHE — Mise en cache des assets statiques
+# --------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/html  "access plus 0 seconds"
-  ExpiresByType image/png  "access plus 7 days"
+  ExpiresDefault                              "access plus 1 month"
+  ExpiresByType text/html                     "access plus 0 seconds"
+  ExpiresByType text/css                      "access plus 1 month"
+  ExpiresByType application/javascript        "access plus 1 month"
+  ExpiresByType image/jpeg                    "access plus 1 year"
+  ExpiresByType image/png                     "access plus 1 year"
+  ExpiresByType image/webp                    "access plus 1 year"
+  ExpiresByType image/svg+xml                 "access plus 1 year"
+  ExpiresByType image/x-icon                  "access plus 1 year"
+  ExpiresByType font/woff2                    "access plus 1 year"
+  ExpiresByType font/woff                     "access plus 1 year"
 </IfModule>
 
-# 6. Headers sécurité
+# --------------------------------------------
+# 7. COMPRESSION — Gzip pour les fichiers texte
+# --------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# --------------------------------------------
+# 8. HEADERS DE SÉCURITÉ
+# --------------------------------------------
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header unset X-Powered-By
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://maps.gstatic.com https://*.googleapis.com; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'self'"
   Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set X-XSS-Protection "0"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
   Header unset Server
 </IfModule>
 
+# --------------------------------------------
+# 9. CHARSET par défaut
+# --------------------------------------------
 AddDefaultCharset UTF-8
-DirectoryIndex index.html
 
-# Custom error pages
+# --------------------------------------------
+# 10. INDEX par défaut
+# --------------------------------------------
+DirectoryIndex index.html index.htm
+
+# --------------------------------------------
+# 11. Pages d'erreur personnalisées
+# --------------------------------------------
 ErrorDocument 404 /404.html
 ErrorDocument 500 /500.html
 ErrorDocument 403 /404.html
 
-# Bloquer fichiers backup
+# --------------------------------------------
+# 12. Bloquer fichiers backup
+# --------------------------------------------
 <FilesMatch "(\.(bak|old|orig|swp|tmp|sql|env)|~)$">
   Require all denied
 </FilesMatch>
