@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thermolaquage & Sablage dans le Var — STV 83 La Seyne-sur-Mer</title>
-  <meta name="description" content="Atelier de thermolaquage et sablage à La Seyne-sur-Mer (83). Traitement de surface pour portails, garde-corps, mobilier métallique. Devis gratuit. ☎ 07 60 24 93 13">
+  <title>Sablage, Métallisation & Thermolaquage dans le Var — STV 83 La Seyne-sur-Mer</title>
+  <meta name="description" content="Atelier de sablage, métallisation au zinc et thermolaquage à La Seyne-sur-Mer (83). Protection anticorrosion durable pour portails, garde-corps et pièces métalliques. Devis gratuit. ☎ 07 60 24 93 13">
   <link rel="canonical" href="https://stv-83.fr/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="STV 83 — Thermolaquage & Sablage dans le Var">
-  <meta property="og:description" content="Atelier de traitement de surface à La Seyne-sur-Mer. Sablage, grenaillage, thermolaquage de pièces métalliques.">
+  <meta property="og:title" content="STV 83 — Sablage, Métallisation & Thermolaquage dans le Var">
+  <meta property="og:description" content="Atelier de traitement de surface à La Seyne-sur-Mer. Sablage, métallisation anticorrosion et thermolaquage de pièces métalliques.">
   <meta property="og:url" content="https://stv-83.fr/">
   <meta property="og:image" content="https://stv-83.fr/public/images/og-card.jpg">
   <meta property="og:image:width" content="1200">
@@ -19,8 +19,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="STV 83 — Thermolaquage & Sablage Var">
-  <meta name="twitter:description" content="Traitement de surface pour pièces métalliques à La Seyne-sur-Mer.">
+  <meta name="twitter:title" content="STV 83 — Sablage, Métallisation & Thermolaquage Var">
+  <meta name="twitter:description" content="Sablage, métallisation et thermolaquage de pièces métalliques à La Seyne-sur-Mer.">
   <meta name="twitter:image" content="https://stv-83.fr/public/images/og-card.jpg">
 
   <link rel="icon" type="image/png" href="public/images/logo.png">
@@ -54,6 +54,10 @@
     .btn-secondary{background:transparent;color:var(--color-white);border:2px solid var(--color-white)}
     .btn-secondary:hover,.btn-secondary:focus-visible{background:var(--color-white);color:var(--color-charcoal)}
     .btn-whatsapp{background:#25D366;color:#fff;border:2px solid #25D366}
+    .btn-outline-dark{background:transparent;color:var(--color-charcoal);border:2px solid var(--color-charcoal)}
+    .btn-outline-dark:hover,.btn-outline-dark:focus-visible{background:var(--color-charcoal);color:var(--color-white)}
+    .step-link{display:inline-block;margin-top:.75rem;font-size:.875rem;font-weight:700;color:#C05200;text-decoration:underline;text-underline-offset:3px}
+    .step-link:hover,.step-link:focus-visible{color:#A34500}
     .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{position:fixed;top:1rem;left:1rem;width:auto;height:auto;padding:.75rem 1.5rem;background:#C05200;color:#fff;z-index:9999;border-radius:4px;font-weight:700}
     .site-header{position:sticky;top:0;z-index:1000;background:var(--color-white);border-bottom:1px solid var(--color-border);transition:box-shadow 250ms ease}
@@ -78,6 +82,14 @@
     .hero-eyebrow::before{content:'';display:block;width:32px;height:2px;background:var(--color-accent)}
     .hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--color-white);line-height:1.05;max-width:18ch}
     .hero h1 .brand{color:var(--color-accent)}
+    .hero h1 .metal-text{font-style:italic;font-size:min(1.08em,9.2vw);letter-spacing:.02em;display:inline-block;padding-right:.1em;color:#E8EBED}
+    @supports ((-webkit-background-clip:text) or (background-clip:text)){
+      .hero h1 .metal-text{background:linear-gradient(105deg,#9aa1a6 0%,#eef1f3 16%,#c3c9ce 30%,#ffffff 46%,#aab1b6 60%,#e6eaec 76%,#9aa1a6 100%);background-size:250% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:metal-sheen 8s ease-in-out infinite}
+    }
+    @keyframes metal-sheen{0%,62%{background-position:100% 0}80%,100%{background-position:0% 0}}
+    .hero h1 .h1-thermo{font-size:.62em;font-weight:700;color:rgba(255,255,255,.92)}
+    .hero-lion{position:absolute;right:-6%;bottom:-10%;width:min(58vw,620px);aspect-ratio:1;background:url('public/images/logo-square-720.png') center/contain no-repeat;background-image:image-set(url('public/images/logo-square-720.webp') type('image/webp'),url('public/images/logo-square-720.png') type('image/png'));opacity:.07;mix-blend-mode:screen;pointer-events:none;z-index:1}
+    @media(prefers-reduced-motion:reduce){.hero h1 .metal-text{animation:none}}
     .hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:rgba(255,255,255,.82);margin-top:1.25rem;max-width:44ch;font-weight:400}
     .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
     .fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
@@ -101,7 +113,7 @@
         "name": "STV 83 — Sablage Thermolaquage Varois",
         "legalName": "SABLAGE THERMOLAQUAGE VAROIS",
         "alternateName": "STV 83",
-        "description": "Atelier spécialisé dans le sablage, le grenaillage et le thermolaquage de pièces métalliques (portails, garde-corps, mobilier urbain, pièces techniques) à La Seyne-sur-Mer (Var, 83). Entreprise SAS créée en janvier 2020.",
+        "description": "Atelier spécialisé dans le sablage, le grenaillage, la métallisation au zinc et le thermolaquage de pièces métalliques (portails, garde-corps, mobilier urbain, pièces techniques) à La Seyne-sur-Mer (Var, 83). Entreprise SAS créée en janvier 2020.",
         "image": [
           "https://stv-83.fr/public/images/portail-2.jpg",
           "https://stv-83.fr/public/images/portail-3.jpg",
@@ -224,6 +236,13 @@
         "description": "Décapage par projection d'abrasif à haute pression pour mettre à nu les surfaces métalliques avant traitement."
       },
       {
+        "@type": "Service",
+        "serviceType": "Métallisation au zinc",
+        "provider": { "@id": "https://stv-83.fr/#business" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Var" },
+        "description": "Projection de zinc sur acier sablé pour une protection anticorrosion en profondeur, en complément du thermolaquage, notamment pour les pièces exposées au milieu marin."
+      },
+      {
         "@type": "FAQPage",
         "mainEntity": [
           {
@@ -240,6 +259,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Toutes les pièces métalliques : acier, aluminium, inox, acier galvanisé, fonte. Portails, grilles, tôles, rambardes, mobilier urbain, verrières, salons de jardin, radiateurs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce que la métallisation ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La métallisation consiste à projeter du zinc en fusion sur l'acier fraîchement sablé. Cette couche protège le métal de la corrosion en profondeur. Associée au thermolaquage, c'est la protection la plus durable pour les pièces exposées, notamment en bord de mer."
             }
           },
           {
@@ -332,13 +359,15 @@
     <section class="hero" aria-label="Présentation STV 83">
       <div class="hero-bg" role="img" aria-label="Portail thermolaqué — réalisation STV 83"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-lion" aria-hidden="true"></div>
       <div class="container hero-content">
         <p class="hero-eyebrow">La Seyne-sur-Mer — Var (83)</p>
         <h1>
           <span class="brand">STV 83</span><br>
-          Sablage &<br>Thermolaquage<br>Varois
+          <em class="metal-text">Sablage,<br>Métallisation</em><br>
+          <span class="h1-thermo">&amp; Thermolaquage</span>
         </h1>
-        <p class="hero-sub">Atelier de finition métal à La Seyne-sur-Mer (Var). Sablage et thermolaquage pour particuliers, ferronniers, métalliers et architectes.</p>
+        <p class="hero-sub">L'atelier varois du traitement de surface métal : sablage, métallisation anticorrosion et thermolaquage. Le partenaire des ferronniers, métalliers et architectes — et de vos portails, garde-corps et pièces uniques.</p>
         <div class="hero-actions">
           <a href="contact.html" class="btn btn-primary">Demander un devis</a>
           <a href="https://wa.me/33760249313?text=Bonjour%2C%20je%20souhaiterais%20un%20devis%20de%20thermolaquage%2Fsablage.%20Voici%20la%20pi%C3%A8ce%20concern%C3%A9e%20%3A" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Envoyer une photo par WhatsApp pour devis">
@@ -367,9 +396,10 @@
           <h2 class="section-title" id="valeurs-title">Nos valeurs</h2>
           <span class="accent-line" aria-hidden="true"></span>
           <p class="valeurs-intro">
-            Nous ne cessons de croître, d'apprendre et de nous améliorer et nos partenaires ne cessent d'augmenter.
-            Riche de notre expérience et de notre savoir-faire, nous vous proposons les meilleures solutions adaptées
-            à tous vos besoins de traitement de vos ouvrages ou vos pièces techniques.
+            Chaque portail, garde-corps ou pièce technique qui passe par notre atelier en ressort protégé
+            pour des années — avec une finition que nous sommes fiers de signer. C'est ce niveau d'exigence
+            qui fait revenir les ferronniers, métalliers et architectes du Var, et qui fait la différence
+            sur votre pièce, qu'elle soit unique ou produite en série.
           </p>
         </div>
 
@@ -377,22 +407,22 @@
           <article class="valeur-card fade-in">
             <p class="valeur-num" aria-hidden="true">01</p>
             <h3>La résistance</h3>
-            <p>La résistance aux chocs et à la corrosion pour un résultat durable dans le temps.</p>
+            <p>Un revêtement qui encaisse les chocs et bloque la corrosion : votre pièce reste belle des années, même face aux embruns.</p>
           </article>
           <article class="valeur-card fade-in">
             <p class="valeur-num" aria-hidden="true">02</p>
             <h3>L'uniformité</h3>
-            <p>L'uniformité du revêtement — absence de coulure, de sur-épaisseur — pour un rendu impeccable.</p>
+            <p>Pas de coulure, pas de sur-épaisseur : le rendu tendu et régulier qui signe un thermolaquage réussi.</p>
           </article>
           <article class="valeur-card fade-in">
             <p class="valeur-num" aria-hidden="true">03</p>
             <h3>La dureté</h3>
-            <p>La dureté de surface, la tenue des couleurs, le large choix de teintes du nuancier RAL.</p>
+            <p>Une surface dure, des couleurs qui tiennent dans le temps — et tout le nuancier RAL pour trouver la vôtre.</p>
           </article>
           <article class="valeur-card fade-in">
             <p class="valeur-num" aria-hidden="true">04</p>
-            <h3>La possibilité</h3>
-            <p>La possibilité d'effets spéciaux tels que : effets rouillés, textures ou sablés.</p>
+            <h3>Le caractère</h3>
+            <p>Effets rouillés, textures, finitions sablées, mat ou brillant : de quoi donner du caractère à chaque projet.</p>
           </article>
         </div>
       </div>
@@ -404,7 +434,7 @@
     <section class="savoir" aria-labelledby="savoir-title">
       <div class="container">
         <div class="savoir-header fade-in">
-          <h2 class="section-title" id="savoir-title">Tout savoir sur le<br>Thermolaquage et le Sablage</h2>
+          <h2 class="section-title" id="savoir-title">Tout savoir sur le Sablage,<br>la Métallisation et le Thermolaquage</h2>
           <span class="accent-line" aria-hidden="true"></span>
         </div>
 
@@ -477,6 +507,22 @@
             <div class="accordion-item fade-in">
               <button class="accordion-trigger"
                       aria-expanded="false"
+                      aria-controls="acc-5">
+                Et la métallisation ?
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div id="acc-5" class="accordion-body" role="region">
+                <p>La métallisation consiste à projeter du zinc en fusion sur l'acier fraîchement sablé. Cette couche
+                protège le métal de la corrosion en profondeur, même en cas de rayure du revêtement. Associée au
+                thermolaquage, c'est la protection la plus durable pour les pièces exposées — bord de mer, embruns,
+                extérieur exigeant.</p>
+                <p><a href="services/metallisation.html">Découvrir notre service de métallisation au zinc dans le Var →</a></p>
+              </div>
+            </div>
+
+            <div class="accordion-item fade-in">
+              <button class="accordion-trigger"
+                      aria-expanded="false"
                       aria-controls="acc-4">
                 Une durée de vie pour le thermolaquage ?
                 <span class="accordion-icon" aria-hidden="true">+</span>
@@ -498,12 +544,12 @@
     <section class="process" aria-labelledby="process-title">
       <div class="container">
         <div class="fade-in">
-          <h2 class="section-title" id="process-title">Notre process en trois étapes</h2>
+          <h2 class="section-title" id="process-title">Notre process en quatre étapes</h2>
           <span class="accent-line" aria-hidden="true"></span>
-          <p class="section-subtitle">Chaque pièce qui sort de notre atelier suit exactement le même protocole — décapage, application, polymérisation — pour garantir une finition durable.</p>
+          <p class="section-subtitle">Décapage, protection anticorrosion, application, cuisson : chaque pièce qui sort de notre atelier suit le même protocole. C'est ce qui garantit une finition qui dure.</p>
         </div>
 
-        <ol class="process-steps">
+        <ol class="process-steps process-steps-4">
           <li class="process-step fade-in">
             <span class="process-step-num" aria-hidden="true">01</span>
             <h3>Sablage / grenaillage</h3>
@@ -511,11 +557,17 @@
           </li>
           <li class="process-step fade-in">
             <span class="process-step-num" aria-hidden="true">02</span>
+            <h3>Métallisation anticorrosion</h3>
+            <p>Selon l'exposition de la pièce : projection de zinc sur l'acier mis à nu pour le protéger de la rouille en profondeur. L'option qui s'impose face aux embruns de la rade et en extérieur exigeant.</p>
+            <a href="services/metallisation.html" class="step-link">En savoir plus sur la métallisation</a>
+          </li>
+          <li class="process-step fade-in">
+            <span class="process-step-num" aria-hidden="true">03</span>
             <h3>Application de la peinture poudre</h3>
             <p>Pulvérisation électrostatique de la poudre (époxy, polyester ou mixte) en cabine dédiée. La couleur RAL choisie est appliquée uniformément, sans coulure ni sur-épaisseur.</p>
           </li>
           <li class="process-step fade-in">
-            <span class="process-step-num" aria-hidden="true">03</span>
+            <span class="process-step-num" aria-hidden="true">04</span>
             <h3>Polymérisation au four</h3>
             <p>Cuisson de la pièce à 200 °C pour stabiliser la peinture. Le résultat : un revêtement dur, brillant ou mat selon la teinte, qui tient 7 à 20 ans selon l'environnement.</p>
           </li>
@@ -531,7 +583,7 @@
         <div class="fade-in">
           <h2 class="section-title" id="audience-title">Pour qui nous travaillons</h2>
           <span class="accent-line" aria-hidden="true"></span>
-          <p class="section-subtitle">STV 83 intervient autant en direct chez les particuliers qu'en sous-traitance pour les professionnels du métal dans le Var et toute la région PACA.</p>
+          <p class="section-subtitle">Du portail familial aux séries pour les pros du métal : particuliers, ferronniers, métalliers, architectes et collectivités nous confient leurs pièces, dans le Var et toute la région PACA.</p>
         </div>
 
         <div class="audience-grid">
@@ -542,7 +594,7 @@
               </svg>
             </div>
             <h3>Particuliers</h3>
-            <p>Portail rouillé, garde-corps, salon de jardin, jantes, mobilier… Devis gratuit sur photo WhatsApp en 24 h.</p>
+            <p>Redonnez une seconde vie à votre portail rouillé, vos jantes, votre salon de jardin ou votre mobilier. Devis gratuit sur photo WhatsApp en 24 h.</p>
           </article>
 
           <article class="audience-card fade-in">
@@ -552,7 +604,7 @@
               </svg>
             </div>
             <h3>Ferronniers &amp; métalliers</h3>
-            <p>Sous-traitance finition pour vos pièces de ferronnerie d'art, escaliers, rampes, structures. Cadence atelier adaptée aux séries.</p>
+            <p>La finition qui met en valeur votre ferronnerie d'art, vos escaliers, rampes et structures. Cadence atelier adaptée aux séries, du prototype à la production.</p>
           </article>
 
           <article class="audience-card fade-in">
@@ -562,7 +614,7 @@
               </svg>
             </div>
             <h3>Architectes &amp; designers</h3>
-            <p>Pour vos projets sur-mesure : verrières, garde-corps haute exigence, mobilier d'extérieur. Conseils sur teintes RAL et finitions.</p>
+            <p>Verrières, garde-corps haute exigence, mobilier d'extérieur : une finition à la hauteur de vos projets sur-mesure, avec conseil sur les teintes RAL et les effets.</p>
           </article>
 
           <article class="audience-card fade-in">
@@ -572,7 +624,7 @@
               </svg>
             </div>
             <h3>Collectivités</h3>
-            <p>Mobilier urbain, candélabres, garde-corps, structures. Travail pour communes, bailleurs et entreprises de la métropole toulonnaise.</p>
+            <p>Mobilier urbain, candélabres, garde-corps, structures : nous travaillons pour les communes, bailleurs et entreprises de la métropole toulonnaise, à deux pas de la rade et de ses chantiers navals.</p>
           </article>
         </div>
       </div>
@@ -586,7 +638,7 @@
         <div class="galerie-header fade-in">
           <h2 class="section-title" id="galerie-title">Nos réalisations</h2>
           <span class="accent-line" aria-hidden="true"></span>
-          <p class="section-subtitle">Pièces finies dans notre atelier — pour des particuliers comme pour des ferronniers et architectes. La galerie est régulièrement enrichie avec nos derniers chantiers et nos vues d'atelier.</p>
+          <p class="section-subtitle">Portails, garde-corps, jantes, mobilier, séries pour les pros : chaque pièce est photographiée à la sortie de l'atelier, telle qu'elle repart chez le client. La galerie s'enrichit régulièrement de nos derniers chantiers.</p>
         </div>
 
         <div class="filter-bar" role="group" aria-label="Filtrer la galerie par catégorie">
@@ -936,7 +988,7 @@
         <div class="fade-in">
           <h2 class="section-title" id="nuancier-title">Nuancier RAL</h2>
           <span class="accent-line" aria-hidden="true"></span>
-          <p class="section-subtitle">Plus de 180 teintes disponibles. Survolez une couleur pour afficher son nom.</p>
+          <p class="section-subtitle">Notre sélection de teintes pour les portails, garde-corps et la ferronnerie — noir et anthracite en tête. Toutes les teintes du nuancier RAL restent disponibles sur demande : recherchez une référence ou un nom de couleur ci-dessous.</p>
         </div>
 
         <div class="nuancier-controls fade-in">
@@ -944,27 +996,26 @@
           <input type="search"
                  id="ral-search"
                  class="nuancier-search"
-                 placeholder="Rechercher (ex: RAL 7016, anthracite…)"
-                 aria-label="Rechercher une couleur RAL">
+                 placeholder="Rechercher dans tout le nuancier (ex: RAL 7016, anthracite…)"
+                 aria-label="Rechercher une couleur dans tout le nuancier RAL">
         </div>
 
-        <div class="nuancier-cats filter-bar fade-in" role="group" aria-label="Filtrer par famille de couleur">
+        <div class="nuancier-cats filter-bar fade-in" role="group" aria-label="Filtrer les teintes par famille">
           <button class="filter-btn active" data-ral-cat="all">Toutes</button>
-          <button class="filter-btn" data-ral-cat="Jaune">Jaune</button>
-          <button class="filter-btn" data-ral-cat="Orange">Orange</button>
-          <button class="filter-btn" data-ral-cat="Rouge">Rouge</button>
-          <button class="filter-btn" data-ral-cat="Violet">Violet</button>
-          <button class="filter-btn" data-ral-cat="Bleu">Bleu</button>
-          <button class="filter-btn" data-ral-cat="Vert">Vert</button>
-          <button class="filter-btn" data-ral-cat="Gris">Gris</button>
-          <button class="filter-btn" data-ral-cat="Brun">Brun</button>
-          <button class="filter-btn" data-ral-cat="Blanc/Noir">Blanc / Noir</button>
+          <button class="filter-btn" data-ral-cat="noir-gris">Noirs &amp; gris</button>
+          <button class="filter-btn" data-ral-cat="blanc-beige">Blancs &amp; beiges</button>
+          <button class="filter-btn" data-ral-cat="couleur">Couleurs</button>
         </div>
 
         <div id="ral-grid" class="ral-grid" role="group" aria-label="Nuancier RAL">
           <!-- Swatches injected by JS -->
         </div>
         <p id="ral-empty" class="nuancier-empty" role="status">Aucune couleur trouvée pour cette recherche.</p>
+
+        <div class="nuancier-more fade-in" style="text-align:center;margin-top:2.5rem">
+          <a href="https://www.ral-farben.de/en/all-ral-colours" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer nofollow">Voir tous les RAL</a>
+          <p style="font-size:.8125rem;color:var(--color-muted);margin-top:.75rem">Nuancier RAL Classic complet (site officiel RAL, nouvel onglet) — toutes les teintes applicables en atelier sur demande.</p>
+        </div>
       </div>
     </section>
 

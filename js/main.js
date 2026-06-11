@@ -463,22 +463,63 @@
     { code: 'RAL 9023', name: 'Gris foncé nacré', hex: '#828282', cat: 'Blanc/Noir' }
   ];
 
+  // Best-sellers affichés par défaut (présélection réaliste portails/garde-corps
+  // en attendant la liste définitive de Damien) — noir et anthracite en tête.
+  // fam : famille de filtre (boutons data-ral-cat de index.html).
+  const bestSellers = [
+    { code: 'RAL 9005', fam: 'noir-gris' },
+    { code: 'RAL 7016', fam: 'noir-gris' },
+    { code: 'RAL 9011', fam: 'noir-gris' },
+    { code: 'RAL 7021', fam: 'noir-gris' },
+    { code: 'RAL 7012', fam: 'noir-gris' },
+    { code: 'RAL 7022', fam: 'noir-gris' },
+    { code: 'RAL 7039', fam: 'noir-gris' },
+    { code: 'RAL 7037', fam: 'noir-gris' },
+    { code: 'RAL 7035', fam: 'noir-gris' },
+    { code: 'RAL 7006', fam: 'noir-gris' },
+    { code: 'RAL 9007', fam: 'noir-gris' },
+    { code: 'RAL 9006', fam: 'noir-gris' },
+    { code: 'RAL 9016', fam: 'blanc-beige' },
+    { code: 'RAL 9010', fam: 'blanc-beige' },
+    { code: 'RAL 9001', fam: 'blanc-beige' },
+    { code: 'RAL 1013', fam: 'blanc-beige' },
+    { code: 'RAL 1015', fam: 'blanc-beige' },
+    { code: 'RAL 8017', fam: 'couleur' },
+    { code: 'RAL 8014', fam: 'couleur' },
+    { code: 'RAL 8019', fam: 'couleur' },
+    { code: 'RAL 8004', fam: 'couleur' },
+    { code: 'RAL 6005', fam: 'couleur' },
+    { code: 'RAL 6009', fam: 'couleur' },
+    { code: 'RAL 6021', fam: 'couleur' },
+    { code: 'RAL 5003', fam: 'couleur' },
+    { code: 'RAL 5010', fam: 'couleur' },
+    { code: 'RAL 5024', fam: 'couleur' },
+    { code: 'RAL 3004', fam: 'couleur' },
+    { code: 'RAL 3005', fam: 'couleur' },
+    { code: 'RAL 3000', fam: 'couleur' }
+  ];
+
   const grid       = document.getElementById('ral-grid');
   const catBtns    = document.querySelectorAll('[data-ral-cat]');
   const searchInput = document.getElementById('ral-search');
   const emptyMsg   = document.getElementById('ral-empty');
   if (!grid) return;
 
-  let activeCategory = 'all';
-  let searchTerm     = '';
+  let activeFamily = 'all';
+  let searchTerm   = '';
 
-  // Build swatches
-  ralColors.forEach(color => {
+  const colorByCode = {};
+  ralColors.forEach(color => { colorByCode[color.code] = color; });
+
+  function buildSwatch(color, fam) {
     const swatch = document.createElement('div');
     swatch.className = 'ral-swatch';
-    swatch.dataset.cat = color.cat;
     swatch.dataset.code = color.code.toLowerCase();
     swatch.dataset.name = color.name.toLowerCase();
+    if (fam) {
+      swatch.dataset.best = '1';
+      swatch.dataset.fam = fam;
+    }
     swatch.setAttribute('tabindex', '0');
     swatch.setAttribute('role', 'img');
     swatch.setAttribute('aria-label', `${color.code} — ${color.name}`);
@@ -489,6 +530,19 @@
       <div class="ral-tooltip">${color.code}<br>${color.name}</div>
     `;
     grid.appendChild(swatch);
+  }
+
+  // Build swatches : best-sellers d'abord (dans l'ordre voulu), puis le reste
+  // du nuancier complet (masqué par défaut, accessible via la recherche).
+  const bestCodes = new Set();
+  bestSellers.forEach(best => {
+    const color = colorByCode[best.code];
+    if (!color) return;
+    bestCodes.add(best.code);
+    buildSwatch(color, best.fam);
+  });
+  ralColors.forEach(color => {
+    if (!bestCodes.has(color.code)) buildSwatch(color, null);
   });
 
   const swatches = grid.querySelectorAll('.ral-swatch');
@@ -496,22 +550,30 @@
   function filterSwatches() {
     let visibleCount = 0;
     swatches.forEach(sw => {
-      const catMatch    = activeCategory === 'all' || sw.dataset.cat === activeCategory;
-      const searchMatch = !searchTerm
-        || sw.dataset.code.includes(searchTerm)
-        || sw.dataset.name.includes(searchTerm);
-
-      if (catMatch && searchMatch) {
-        sw.classList.remove('hidden');
-        visibleCount++;
+      let show;
+      if (searchTerm) {
+        // Recherche active : sur la totalité du nuancier RAL
+        show = sw.dataset.code.includes(searchTerm) || sw.dataset.name.includes(searchTerm);
       } else {
-        sw.classList.add('hidden');
+        // Champ vide : retour aux best-sellers (+ filtre famille éventuel)
+        show = sw.dataset.best === '1'
+          && (activeFamily === 'all' || sw.dataset.fam === activeFamily);
       }
+      sw.classList.toggle('hidden', !show);
+      if (show) visibleCount++;
     });
 
     if (emptyMsg) {
       emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
     }
+  }
+
+  function setActiveFamilyButton(family) {
+    catBtns.forEach(b => {
+      const isActive = b.dataset.ralCat === family;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', String(isActive));
+    });
   }
 
   // Set initial aria-pressed on RAL category buttons
@@ -521,13 +583,11 @@
 
   catBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      catBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      activeCategory = btn.dataset.ralCat;
+      // Le filtre famille s'applique aux best-sellers : on sort du mode recherche
+      if (searchInput) searchInput.value = '';
+      searchTerm = '';
+      activeFamily = btn.dataset.ralCat;
+      setActiveFamilyButton(activeFamily);
       filterSwatches();
     });
   });
@@ -535,9 +595,16 @@
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       searchTerm = searchInput.value.toLowerCase().trim();
+      // La recherche couvre tout le nuancier : les boutons famille ne s'appliquent plus
+      if (searchTerm && activeFamily !== 'all') {
+        activeFamily = 'all';
+        setActiveFamilyButton('all');
+      }
       filterSwatches();
     });
   }
+
+  filterSwatches(); // état initial : les 30 best-sellers
   } // end renderNuancier
 
   // Trigger render when #nuancier is within 200px of viewport
