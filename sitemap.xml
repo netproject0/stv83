@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://stv-83.fr/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-11</lastmod>
     <image:image><image:loc>https://stv-83.fr/public/images/garde-corps-1.jpg</image:loc></image:image>
     <image:image><image:loc>https://stv-83.fr/public/images/garde-corps-2.jpg</image:loc></image:image>
     <image:image><image:loc>https://stv-83.fr/public/images/garde-corps-3.jpg</image:loc></image:image>
@@ -31,23 +31,27 @@
   </url>
   <url>
     <loc>https://stv-83.fr/services/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://stv-83.fr/services/thermolaquage-portail.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://stv-83.fr/services/thermolaquage-aluminium.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://stv-83.fr/services/sablage-grenaillage.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://stv-83.fr/services/metallisation.html</loc>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://stv-83.fr/faq.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://stv-83.fr/a-propos.html</loc>
