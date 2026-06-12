@@ -9,10 +9,11 @@
 
 'use strict';
 
-const CACHE_VERSION = 'stv83-v9';
+const CACHE_VERSION = 'stv83-v10';
 
 const PRECACHE_ASSETS = [
   '/index.html',
+  '/devis.html',
   '/css/style.css',
   '/js/main.js',
   '/fonts/Inter-Regular.woff2',

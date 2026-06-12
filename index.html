@@ -97,6 +97,43 @@
     :focus-visible{outline:3px solid var(--color-accent);outline-offset:3px}
     picture{display:contents}
   </style>
+  <noscript><style>.fade-in{opacity:1 !important;transform:none !important}</style></noscript>
+
+  <!-- CSS vague 2 (inline, page autonome) : bloc confiance, section rails, cartes audience cliquables -->
+  <style>
+    /* ── Ils nous font confiance ── */
+    .confiance{padding-block:var(--section-v-mobile,3rem);background:var(--color-dark)}
+    .confiance .section-title{color:var(--color-white)}
+    .confiance-grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+    .confiance-card{display:block;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);padding:1.75rem 1.5rem;color:var(--color-white);transition:background var(--transition),border-color var(--transition),transform var(--transition)}
+    a.confiance-card:hover,a.confiance-card:focus-visible{background:rgba(255,255,255,.09);border-color:rgba(229,98,11,.5);transform:translateY(-3px)}
+    .confiance-stars{display:flex;gap:3px;margin-bottom:1rem}
+    .confiance-stars svg{width:18px;height:18px;fill:var(--color-accent)}
+    .confiance-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(229,98,11,.14);color:var(--color-accent);margin-bottom:1rem}
+    .confiance-icon svg{width:20px;height:20px}
+    .confiance-strong{font-size:1.125rem;font-weight:700;color:var(--color-white)}
+    .confiance-date{font-weight:400;font-size:.875rem;color:rgba(255,255,255,.6)}
+    .confiance-sub{margin-top:.45rem;font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.6}
+    .confiance-hint{display:inline-block;margin-top:.85rem;font-size:.8125rem;font-weight:700;color:var(--color-accent);text-decoration:underline;text-underline-offset:3px}
+    @media(min-width:768px){.confiance-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:1024px){.confiance{padding-block:var(--section-v-desktop,6rem)}}
+    /* ── Rails & profilés laqués ── */
+    .rails{padding-block:var(--section-v-mobile,3rem);background:var(--color-white)}
+    .rails-layout{display:grid;gap:2.5rem;align-items:center;grid-template-columns:1fr}
+    .rails-text p{font-size:1rem;color:var(--color-muted);line-height:1.7;max-width:56ch}
+    .rails-text p+p{margin-top:1rem}
+    .rails-rals{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem}
+    .rails-rals li{font-size:.75rem;font-weight:700;letter-spacing:.04em;padding:.3rem .7rem;border:1px solid var(--color-border);border-radius:999px;color:var(--color-charcoal);background:var(--color-bg)}
+    .rails-visual{max-width:560px;margin-inline:auto;width:100%}
+    .rails-visual svg{width:100%;height:auto;display:block}
+    .rails-note{margin-top:1rem;font-size:.8125rem;font-style:italic;color:var(--color-muted);text-align:center}
+    @media(min-width:900px){.rails-layout{grid-template-columns:5fr 6fr}}
+    @media(min-width:1024px){.rails{padding-block:var(--section-v-desktop,6rem)}}
+    /* ── Cartes audience cliquables ── */
+    a.audience-card{display:block}
+    .audience-cta{display:inline-block;margin-top:.9rem;font-size:.8125rem;font-weight:700;color:#C05200;text-decoration:underline;text-underline-offset:3px}
+    a.audience-card:hover .audience-cta,a.audience-card:focus-visible .audience-cta{color:#A34500}
+  </style>
 
   <!-- Non-critical CSS loaded asynchronously -->
   <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -320,6 +357,7 @@
           <li><a href="services/index.html">Services</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="devis.html">Devis</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
 
@@ -345,6 +383,7 @@
       <a href="services/index.html">Services</a>
       <a href="faq.html">FAQ</a>
       <a href="a-propos.html">À propos</a>
+      <a href="devis.html">Devis</a>
       <a href="contact.html">Contact</a>
       <a href="tel:0760249313" class="mobile-phone">07 60 24 93 13</a>
     </nav>
@@ -368,7 +407,7 @@
         </h1>
         <p class="hero-sub">L'atelier varois du traitement de surface métal : sablage, métallisation anticorrosion et thermolaquage. Le partenaire des ferronniers, métalliers et architectes — et de vos portails, garde-corps et pièces uniques.</p>
         <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary">Demander un devis</a>
+          <a href="devis.html" class="btn btn-primary">Demander un devis</a>
           <a href="https://wa.me/33760249313?text=Bonjour%2C%20je%20souhaiterais%20un%20devis%20de%20thermolaquage%2Fsablage.%20Voici%20la%20pi%C3%A8ce%20concern%C3%A9e%20%3A" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Envoyer une photo par WhatsApp pour devis">
             <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="currentColor" style="vertical-align:-3px;margin-right:6px">
               <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 22h-.1c-1.8 0-3.6-.5-5.2-1.4l-.4-.2-3.9 1 1-3.8-.2-.4C2.1 15.6 1.5 13.8 1.5 12c0-5.8 4.7-10.5 10.5-10.5 2.8 0 5.4 1.1 7.4 3.1 2 2 3.1 4.6 3.1 7.4 0 5.8-4.7 10.5-10.5 10.5zm0-22C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/>
@@ -575,6 +614,56 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════
+         ILS NOUS FONT CONFIANCE (D3)
+    ════════════════════════════════════════════════════════ -->
+    <section class="confiance" aria-labelledby="confiance-title">
+      <div class="container">
+        <div class="fade-in">
+          <h2 class="section-title" id="confiance-title">Ils nous font confiance</h2>
+          <span class="accent-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="confiance-grid">
+          <a class="confiance-card fade-in" href="https://maps.google.com/?cid=3659100389396240980" target="_blank" rel="noopener noreferrer">
+            <div class="confiance-stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><defs><linearGradient id="star-partial"><stop offset="80%" stop-color="#E5620B"/><stop offset="80%" stop-color="rgba(229,98,11,.22)"/></linearGradient></defs><path fill="url(#star-partial)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            </div>
+            <p class="confiance-strong">4,8/5 — 12 avis Google <span class="confiance-date">(juin 2026)</span></p>
+            <p class="confiance-sub">La note de notre atelier sur Google, laissée par des particuliers et des pros du Var.</p>
+            <span class="confiance-hint">Voir notre fiche Google</span>
+          </a>
+
+          <a class="confiance-card fade-in" href="https://www.instagram.com/happyfer83/" target="_blank" rel="noopener noreferrer">
+            <div class="confiance-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <p class="confiance-strong">@happyfer83</p>
+            <p class="confiance-sub">Ferronnier varois qui nous fait confiance pour le thermolaquage de ses réalisations.</p>
+            <span class="confiance-hint">Voir son compte Instagram</span>
+          </a>
+
+          <div class="confiance-card fade-in">
+            <div class="confiance-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <p class="confiance-strong">Pros &amp; particuliers</p>
+            <p class="confiance-sub">Ferronniers, métalliers, architectes, collectivités et particuliers du Var : chaque pièce reçoit la même attention, du portail à la série industrielle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
          POUR QUI NOUS TRAVAILLONS (D)
     ════════════════════════════════════════════════════════ -->
     <section class="audience" aria-labelledby="audience-title">
@@ -586,7 +675,7 @@
         </div>
 
         <div class="audience-grid">
-          <article class="audience-card fade-in">
+          <a href="devis.html#particulier" class="audience-card fade-in">
             <div class="audience-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 12 12 3l9 9"/><path d="M5 10v11h14V10"/><path d="M9 21V13h6v8"/>
@@ -594,9 +683,10 @@
             </div>
             <h3>Particuliers</h3>
             <p>Redonnez une seconde vie à votre portail rouillé, vos jantes, votre salon de jardin ou votre mobilier. Devis gratuit sur photo WhatsApp en 24 h.</p>
-          </article>
+            <span class="audience-cta">Demander un devis particulier →</span>
+          </a>
 
-          <article class="audience-card fade-in">
+          <a href="devis.html#pro" class="audience-card fade-in">
             <div class="audience-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 7h7l-3 7h-7zM3 3h6v18H3zM9 3l5 4M3 21h18"/>
@@ -604,9 +694,10 @@
             </div>
             <h3>Ferronniers &amp; métalliers</h3>
             <p>La finition qui met en valeur votre ferronnerie d'art, vos escaliers, rampes et structures. Cadence atelier adaptée aux séries, du prototype à la production.</p>
-          </article>
+            <span class="audience-cta">Demander un devis pro →</span>
+          </a>
 
-          <article class="audience-card fade-in">
+          <a href="devis.html#pro" class="audience-card fade-in">
             <div class="audience-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="3 12 12 3 21 12"/><path d="M5 10v11h14V10"/><line x1="12" y1="14" x2="12" y2="21"/>
@@ -614,9 +705,10 @@
             </div>
             <h3>Architectes &amp; designers</h3>
             <p>Verrières, garde-corps haute exigence, mobilier d'extérieur : une finition à la hauteur de vos projets sur-mesure, avec conseil sur les teintes RAL et les effets.</p>
-          </article>
+            <span class="audience-cta">Demander un devis pro →</span>
+          </a>
 
-          <article class="audience-card fade-in">
+          <a href="devis.html#pro" class="audience-card fade-in">
             <div class="audience-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/>
@@ -624,7 +716,8 @@
             </div>
             <h3>Collectivités</h3>
             <p>Mobilier urbain, candélabres, garde-corps, structures : nous travaillons pour les communes, bailleurs et entreprises de la métropole toulonnaise, à deux pas de la rade et de ses chantiers navals.</p>
-          </article>
+            <span class="audience-cta">Demander un devis pro →</span>
+          </a>
         </div>
       </div>
     </section>
@@ -932,6 +1025,84 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
+         RAILS & PROFILÉS LAQUÉS (D5) — illustration assumée
+    ════════════════════════════════════════════════════════ -->
+    <section class="rails" aria-labelledby="rails-title">
+      <div class="container">
+        <div class="rails-layout">
+          <div class="rails-text fade-in">
+            <h2 class="section-title" id="rails-title">Rails &amp; profilés laqués</h2>
+            <span class="accent-line" aria-hidden="true"></span>
+            <p>Rails de portail coulissant, profilés, tubes et cornières : nous thermolaquons vos longueurs dans nos teintes phares — le noir foncé RAL 9005 et le gris anthracite RAL 7016 en tête, complétés par le noir graphite, le gris clair et le blanc pur.</p>
+            <p>Notre four de 2,70 × 2,70 × 8,90 m accepte les grandes longueurs d'un seul tenant : à l'unité pour le rail de votre portail, ou en série pour les ferronniers et métalliers.</p>
+            <ul class="rails-rals" aria-label="Nos teintes phares">
+              <li>RAL 9005 — Noir foncé</li>
+              <li>RAL 7016 — Gris anthracite</li>
+              <li>RAL 9011 — Noir graphite</li>
+              <li>RAL 7035 — Gris clair</li>
+              <li>RAL 9010 — Blanc pur</li>
+            </ul>
+          </div>
+
+          <div class="rails-visual fade-in">
+            <svg viewBox="0 0 640 440" role="img" aria-label="Illustration stylisée : éventail de cinq rails thermolaqués dans les teintes phares de l'atelier — blanc pur RAL 9010, gris clair RAL 7035, noir graphite RAL 9011, gris anthracite RAL 7016 et noir foncé RAL 9005" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ral-9010" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#D8D7D1"/>
+                  <stop offset="0.45" stop-color="#FFFFFF"/>
+                  <stop offset="0.62" stop-color="#F2F1EB"/>
+                  <stop offset="1" stop-color="#CBCAC4"/>
+                </linearGradient>
+                <linearGradient id="ral-7035" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#A9ACA8"/>
+                  <stop offset="0.45" stop-color="#DEE0DC"/>
+                  <stop offset="0.62" stop-color="#C8CBC6"/>
+                  <stop offset="1" stop-color="#9B9E9A"/>
+                </linearGradient>
+                <linearGradient id="ral-9011" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#16181A"/>
+                  <stop offset="0.45" stop-color="#3E444A"/>
+                  <stop offset="0.62" stop-color="#26292C"/>
+                  <stop offset="1" stop-color="#101214"/>
+                </linearGradient>
+                <linearGradient id="ral-7016" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#2B3135"/>
+                  <stop offset="0.45" stop-color="#5A646B"/>
+                  <stop offset="0.62" stop-color="#3C4449"/>
+                  <stop offset="1" stop-color="#23282C"/>
+                </linearGradient>
+                <linearGradient id="ral-9005" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#0B0B0D"/>
+                  <stop offset="0.45" stop-color="#43474B"/>
+                  <stop offset="0.62" stop-color="#1B1D1F"/>
+                  <stop offset="1" stop-color="#060607"/>
+                </linearGradient>
+                <radialGradient id="rails-rivet" cx="0.35" cy="0.3" r="1">
+                  <stop offset="0" stop-color="#8E969C"/>
+                  <stop offset="0.55" stop-color="#4A5055"/>
+                  <stop offset="1" stop-color="#26292C"/>
+                </radialGradient>
+                <filter id="rails-shadow" x="-15%" y="-10%" width="130%" height="125%">
+                  <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0F0F0F" flood-opacity="0.28"/>
+                </filter>
+              </defs>
+              <g filter="url(#rails-shadow)">
+                <rect x="293" y="42" width="54" height="358" rx="12" fill="url(#ral-9010)" transform="rotate(-36 320 400)"/>
+                <rect x="293" y="42" width="54" height="358" rx="12" fill="url(#ral-7035)" transform="rotate(36 320 400)"/>
+                <rect x="293" y="42" width="54" height="358" rx="12" fill="url(#ral-9011)" transform="rotate(-18 320 400)"/>
+                <rect x="293" y="42" width="54" height="358" rx="12" fill="url(#ral-7016)" transform="rotate(18 320 400)"/>
+                <rect x="293" y="42" width="54" height="358" rx="12" fill="url(#ral-9005)"/>
+              </g>
+              <circle cx="320" cy="368" r="15" fill="url(#rails-rivet)"/>
+              <circle cx="320" cy="368" r="5.5" fill="#16181A"/>
+            </svg>
+            <p class="rails-note">Illustration — aperçu de nos coloris phares</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
          NUANCIER RAL
     ════════════════════════════════════════════════════════ -->
     <section id="nuancier" class="nuancier" aria-labelledby="nuancier-title">
@@ -982,7 +1153,7 @@
 
         <p class="testimonials-intro" style="text-align:center;color:#666;margin-bottom:32px">
           Avis vérifiés sur Google — note moyenne <strong>4,8/5</strong> sur 12 avis ·
-          <a href="https://www.google.com/maps?cid=3659100389396240980" target="_blank" rel="noopener noreferrer">voir tous les avis sur notre fiche Google</a>
+          <a href="https://maps.google.com/?cid=3659100389396240980" target="_blank" rel="noopener noreferrer">voir tous les avis sur notre fiche Google</a>
         </p>
         <div class="testimonials-grid">
           <article class="testimonial-card fade-in">
@@ -1080,7 +1251,7 @@
         <h2>Un projet en tête ?<br>Demandez votre devis</h2>
         <p class="cta-sub">Envoyez-nous une photo de votre pièce, on vous rappelle.</p>
         <div class="cta-actions">
-          <a href="contact.html" class="btn btn-secondary">Nous contacter</a>
+          <a href="devis.html" class="btn btn-secondary">Demander un devis</a>
           <a href="https://wa.me/33760249313?text=Bonjour%2C%20je%20souhaiterais%20un%20devis%20de%20thermolaquage%2Fsablage.%20Voici%20la%20pi%C3%A8ce%20concern%C3%A9e%20%3A" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="currentColor" style="vertical-align:-3px;margin-right:6px">
               <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 22h-.1c-1.8 0-3.6-.5-5.2-1.4l-.4-.2-3.9 1 1-3.8-.2-.4C2.1 15.6 1.5 13.8 1.5 12c0-5.8 4.7-10.5 10.5-10.5 2.8 0 5.4 1.1 7.4 3.1 2 2 3.1 4.6 3.1 7.4 0 5.8-4.7 10.5-10.5 10.5zm0-22C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/>
@@ -1124,7 +1295,7 @@
               </svg>
             </a>
             <!-- Google Business / Reviews -->
-            <a href="https://www.google.com/search?q=STV+83+Sablage+Thermolaquage+Varois+La+Seyne+sur+Mer" aria-label="Avis Google STV 83" rel="noopener noreferrer" target="_blank">
+            <a href="https://maps.google.com/?cid=3659100389396240980" aria-label="Avis Google STV 83" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
               </svg>
@@ -1142,6 +1313,7 @@
             <li><a href="services/index.html">Services</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="devis.html">Devis</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="mentions-legales.html">Mentions légales</a></li>
           </ul>
